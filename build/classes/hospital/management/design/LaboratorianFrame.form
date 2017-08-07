@@ -58,7 +58,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="dateTimeLabel" alignment="0" pref="1018" max="32767" attributes="0"/>
-              <Component id="receptionistInformationLabel" alignment="0" max="32767" attributes="0"/>
+              <Component id="laboratorianInformationLabel" alignment="0" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Component id="jPanel1" max="32767" attributes="0"/>
@@ -70,7 +70,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="receptionistInformationLabel" min="-2" pref="51" max="-2" attributes="0"/>
+                  <Component id="laboratorianInformationLabel" min="-2" pref="51" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="dateTimeLabel" min="-2" pref="51" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -90,7 +90,7 @@
             <Property name="text" type="java.lang.String" value="Sayef Reyadh Khan --- ID : 15.01.04.128"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="receptionistInformationLabel">
+        <Component class="javax.swing.JLabel" name="laboratorianInformationLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
@@ -108,9 +108,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="reportPatientNameLabel" min="-2" pref="224" max="-2" attributes="0"/>
+                              <Component id="reportDoctorIdLabel" min="-2" pref="224" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="reportPatientNameTextField" max="32767" attributes="0"/>
+                              <Component id="reportDoctorIdTextField" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="reportSubjectLabel" min="-2" pref="224" max="-2" attributes="0"/>
@@ -118,9 +118,17 @@
                               <Component id="reportSubjectTextField" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="reportDetailsLabel" min="-2" pref="224" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="reportDetailsLabel" min="-2" pref="224" max="-2" attributes="0"/>
+                                  <Component id="addReportButton" max="32767" attributes="0"/>
+                              </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" pref="724" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="reportPatientIdLabel" min="-2" pref="224" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="reportPatientIdTextField" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -129,11 +137,16 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="19" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="reportPatientNameLabel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="reportPatientNameTextField" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
+                          <Component id="reportPatientIdLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="reportPatientIdTextField" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="reportDoctorIdLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="reportDoctorIdTextField" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -142,35 +155,33 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="reportDetailsLabel" min="-2" pref="58" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
+                              <Component id="addReportButton" min="-2" pref="126" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane1" pref="449" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="388" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="reportPatientNameLabel">
+            <Component class="javax.swing.JLabel" name="reportDoctorIdLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="24" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Patient Name"/>
+                <Property name="text" type="java.lang.String" value="Doctor Id"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="reportPatientNameTextField">
+            <Component class="javax.swing.JTextField" name="reportDoctorIdTextField">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="24" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Name"/>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="reportSubjectTextField">
@@ -180,7 +191,6 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Default All"/>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="reportSubjectLabel">
@@ -217,6 +227,31 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="addReportButton">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="24" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Add"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="reportPatientIdTextField">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="24" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="reportPatientIdLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="24" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Patient Id"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>

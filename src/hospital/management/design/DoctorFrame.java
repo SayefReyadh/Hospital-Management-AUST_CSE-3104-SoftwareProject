@@ -37,7 +37,7 @@ public class DoctorFrame extends javax.swing.JFrame {
         doctorTaskButtonPanel = new javax.swing.JPanel();
         viewPatientButton = new javax.swing.JButton();
         viewAppointmentButton = new javax.swing.JButton();
-        receptionistTaskPanel = new javax.swing.JPanel();
+        doctorTaskPanel = new javax.swing.JPanel();
         patientInformationPanel = new javax.swing.JPanel();
         titlePatientLabel = new javax.swing.JLabel();
         patientReportsButton = new javax.swing.JButton();
@@ -114,9 +114,9 @@ public class DoctorFrame extends javax.swing.JFrame {
 
         doctorWorkStationPanel.add(doctorTaskButtonPanel);
 
-        receptionistTaskPanel.setBackground(new java.awt.Color(255, 204, 51));
-        receptionistTaskPanel.setMaximumSize(new java.awt.Dimension(821, 644));
-        receptionistTaskPanel.setLayout(new java.awt.CardLayout());
+        doctorTaskPanel.setBackground(new java.awt.Color(255, 204, 51));
+        doctorTaskPanel.setMaximumSize(new java.awt.Dimension(821, 644));
+        doctorTaskPanel.setLayout(new java.awt.CardLayout());
 
         patientInformationPanel.setBackground(new java.awt.Color(204, 102, 0));
         patientInformationPanel.setMaximumSize(new java.awt.Dimension(821, 644));
@@ -252,7 +252,7 @@ public class DoctorFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        receptionistTaskPanel.add(patientInformationPanel, "card2");
+        doctorTaskPanel.add(patientInformationPanel, "card2");
 
         patientReportsPanel.setBackground(new java.awt.Color(0, 153, 153));
         patientReportsPanel.setMaximumSize(new java.awt.Dimension(821, 644));
@@ -309,7 +309,7 @@ public class DoctorFrame extends javax.swing.JFrame {
                     .addContainerGap(569, Short.MAX_VALUE)))
         );
 
-        receptionistTaskPanel.add(patientReportsPanel, "card4");
+        doctorTaskPanel.add(patientReportsPanel, "card4");
 
         appointmentPanel.setBackground(new java.awt.Color(255, 255, 0));
         appointmentPanel.setMaximumSize(new java.awt.Dimension(821, 644));
@@ -367,7 +367,7 @@ public class DoctorFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        receptionistTaskPanel.add(appointmentPanel, "card5");
+        doctorTaskPanel.add(appointmentPanel, "card5");
 
         patientListPanel.setBackground(new java.awt.Color(255, 255, 0));
         patientListPanel.setMaximumSize(new java.awt.Dimension(821, 644));
@@ -408,9 +408,9 @@ public class DoctorFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        receptionistTaskPanel.add(patientListPanel, "card5");
+        doctorTaskPanel.add(patientListPanel, "card5");
 
-        doctorWorkStationPanel.add(receptionistTaskPanel);
+        doctorWorkStationPanel.add(doctorTaskPanel);
 
         javax.swing.GroupLayout receptionistPanelLayout = new javax.swing.GroupLayout(receptionistPanel);
         receptionistPanel.setLayout(receptionistPanelLayout);
@@ -459,10 +459,10 @@ public class DoctorFrame extends javax.swing.JFrame {
     
     public void addPanelToReceptionistTaskPanel(JPanel panel)
     {
-        receptionistTaskPanel.removeAll();
-        receptionistTaskPanel.add(panel);
-        receptionistTaskPanel.repaint();
-        receptionistTaskPanel.revalidate();
+        doctorTaskPanel.removeAll();
+        doctorTaskPanel.add(panel);
+        doctorTaskPanel.repaint();
+        doctorTaskPanel.revalidate();
     }
     
     /**
@@ -514,6 +514,7 @@ public class DoctorFrame extends javax.swing.JFrame {
     private javax.swing.JLabel dateTimeLabel;
     private javax.swing.JLabel doctorInformationLabel;
     private javax.swing.JPanel doctorTaskButtonPanel;
+    private javax.swing.JPanel doctorTaskPanel;
     private javax.swing.JPanel doctorWorkStationPanel;
     private javax.swing.JLabel patientAddressLabel;
     private javax.swing.JScrollPane patientAddressScrollPane;
@@ -536,7 +537,6 @@ public class DoctorFrame extends javax.swing.JFrame {
     private javax.swing.JButton patientReportsButton;
     private javax.swing.JPanel patientReportsPanel;
     private javax.swing.JPanel receptionistPanel;
-    private javax.swing.JPanel receptionistTaskPanel;
     private javax.swing.JScrollPane reportsScrollPane;
     private javax.swing.JTable reportsTable;
     private javax.swing.JLabel searchDateLabel;

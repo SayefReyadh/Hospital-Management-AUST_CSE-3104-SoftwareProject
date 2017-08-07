@@ -11,12 +11,12 @@ import javax.swing.JPanel;
  *
  * @author SayefReyadh
  */
-public class LaboratorianFrame extends javax.swing.JFrame {
+public class NurseFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
      */
-    public LaboratorianFrame() {
+    public NurseFrame() {
         initComponents();
     }
 
@@ -33,16 +33,10 @@ public class LaboratorianFrame extends javax.swing.JFrame {
         dateTimeLabel = new javax.swing.JLabel();
         laboratorianInformationLabel = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        reportDoctorIdLabel = new javax.swing.JLabel();
-        reportDoctorIdTextField = new javax.swing.JTextField();
-        reportSubjectTextField = new javax.swing.JTextField();
-        reportSubjectLabel = new javax.swing.JLabel();
-        reportDetailsLabel = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        reportDetailsTextArea = new javax.swing.JTextArea();
-        addReportButton = new javax.swing.JButton();
-        reportPatientIdTextField = new javax.swing.JTextField();
-        reportPatientIdLabel = new javax.swing.JLabel();
+        wardNameLabel = new javax.swing.JLabel();
+        wardNameComboBox = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        patientListTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -62,39 +56,26 @@ public class LaboratorianFrame extends javax.swing.JFrame {
         laboratorianInformationLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         laboratorianInformationLabel.setText("Date / Day / Time");
 
-        reportDoctorIdLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        reportDoctorIdLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        reportDoctorIdLabel.setText("Doctor Id");
+        wardNameLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        wardNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        wardNameLabel.setText("Ward Name");
 
-        reportDoctorIdTextField.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        reportDoctorIdTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        wardNameComboBox.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        wardNameComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        reportSubjectTextField.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        reportSubjectTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        reportSubjectTextField.setText("Default All");
-
-        reportSubjectLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        reportSubjectLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        reportSubjectLabel.setText("Report Subject");
-
-        reportDetailsLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        reportDetailsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        reportDetailsLabel.setText("Details");
-
-        reportDetailsTextArea.setColumns(20);
-        reportDetailsTextArea.setRows(5);
-        reportDetailsTextArea.setEnabled(false);
-        jScrollPane1.setViewportView(reportDetailsTextArea);
-
-        addReportButton.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        addReportButton.setText("Add");
-
-        reportPatientIdTextField.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        reportPatientIdTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        reportPatientIdLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        reportPatientIdLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        reportPatientIdLabel.setText("Patient Id");
+        patientListTable.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        patientListTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(patientListTable);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -103,48 +84,23 @@ public class LaboratorianFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(reportDoctorIdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(wardNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(reportDoctorIdTextField))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(reportSubjectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(reportSubjectTextField))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(reportDetailsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 724, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(reportPatientIdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(reportPatientIdTextField)))
+                        .addComponent(wardNameComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 19, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(reportPatientIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(reportPatientIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(reportDoctorIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(reportDoctorIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(wardNameComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                    .addComponent(wardNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(reportSubjectLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(reportSubjectTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(reportDetailsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(153, 153, 153)
-                        .addComponent(addReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout receptionistPanelLayout = new javax.swing.GroupLayout(receptionistPanel);
@@ -203,14 +159,46 @@ public class LaboratorianFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LaboratorianFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NurseFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LaboratorianFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NurseFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LaboratorianFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NurseFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LaboratorianFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NurseFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -247,25 +235,19 @@ public class LaboratorianFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LaboratorianFrame().setVisible(true);
+                new NurseFrame().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addReportButton;
     private javax.swing.JLabel dateTimeLabel;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel laboratorianInformationLabel;
+    private javax.swing.JTable patientListTable;
     private javax.swing.JPanel receptionistPanel;
-    private javax.swing.JLabel reportDetailsLabel;
-    private javax.swing.JTextArea reportDetailsTextArea;
-    private javax.swing.JLabel reportDoctorIdLabel;
-    private javax.swing.JTextField reportDoctorIdTextField;
-    private javax.swing.JLabel reportPatientIdLabel;
-    private javax.swing.JTextField reportPatientIdTextField;
-    private javax.swing.JLabel reportSubjectLabel;
-    private javax.swing.JTextField reportSubjectTextField;
+    private javax.swing.JComboBox<String> wardNameComboBox;
+    private javax.swing.JLabel wardNameLabel;
     // End of variables declaration//GEN-END:variables
 }
