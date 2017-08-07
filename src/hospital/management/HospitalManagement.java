@@ -6,6 +6,7 @@
 package hospital.management;
 
 import hospital.management.design.Login;
+import hospital.management.design.ReceptionistFrame;
 
 /**
  *
@@ -18,7 +19,7 @@ public class HospitalManagement {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        new Login().setVisible(true);
+        new ReceptionistFrame().setVisible(true);
     }
     
 }

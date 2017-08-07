@@ -5,6 +5,8 @@
  */
 package hospital.management.design;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author SayefReyadh
@@ -16,6 +18,7 @@ public class ReceptionistFrame extends javax.swing.JFrame {
      */
     public ReceptionistFrame() {
         initComponents();
+        addPanelToReceptionistTaskPanel(patientInformationPanel);
     }
 
     /**
@@ -27,13 +30,24 @@ public class ReceptionistFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        receptionistPanel = new javax.swing.JPanel();
+        dateTimeLabel = new javax.swing.JLabel();
+        receptionistInformationLabel = new javax.swing.JLabel();
+        receptionistWorkStationPanel = new javax.swing.JPanel();
+        receptionistTaskButtonPanel = new javax.swing.JPanel();
+        addPatientButton = new javax.swing.JButton();
+        appointmentButton = new javax.swing.JButton();
+        billButton = new javax.swing.JButton();
+        assignWardButton = new javax.swing.JButton();
+        receptionistTaskPanel = new javax.swing.JPanel();
+        patientInformationPanel = new javax.swing.JPanel();
+        titlePatientLabel = new javax.swing.JLabel();
+        billPanel = new javax.swing.JPanel();
+        titleBillLabel = new javax.swing.JLabel();
+        assignWardPanel = new javax.swing.JPanel();
+        titleAssignWardLabel = new javax.swing.JLabel();
+        appointmentPanel = new javax.swing.JPanel();
+        titleAppointmentLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -43,59 +57,174 @@ public class ReceptionistFrame extends javax.swing.JFrame {
         setLocation(new java.awt.Point(200, 20));
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+        receptionistPanel.setBackground(new java.awt.Color(0, 153, 153));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton1.setText("Add Patient");
+        dateTimeLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        dateTimeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        dateTimeLabel.setText("Sayef Reyadh Khan --- ID : 15.01.04.128");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Sayef Reyadh Khan --- ID : 15.01.04.128");
+        receptionistInformationLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        receptionistInformationLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        receptionistInformationLabel.setText("Date / Day / Time");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Date / Day / Time");
+        receptionistWorkStationPanel.setBackground(new java.awt.Color(0, 204, 204));
+        receptionistWorkStationPanel.setForeground(new java.awt.Color(255, 255, 255));
+        receptionistWorkStationPanel.setLayout(new javax.swing.BoxLayout(receptionistWorkStationPanel, javax.swing.BoxLayout.LINE_AXIS));
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton2.setText("Appointment");
+        receptionistTaskButtonPanel.setLayout(new java.awt.GridLayout(4, 1));
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton3.setText("Bill");
+        addPatientButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        addPatientButton.setText("Add Patient");
+        addPatientButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addPatientButtonActionPerformed(evt);
+            }
+        });
+        receptionistTaskButtonPanel.add(addPatientButton);
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton4.setText("Assign Ward");
+        appointmentButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        appointmentButton.setText("Appointment");
+        appointmentButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                appointmentButtonActionPerformed(evt);
+            }
+        });
+        receptionistTaskButtonPanel.add(appointmentButton);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1001, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+        billButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        billButton.setText("Bill");
+        billButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                billButtonActionPerformed(evt);
+            }
+        });
+        receptionistTaskButtonPanel.add(billButton);
+
+        assignWardButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        assignWardButton.setText("Assign Ward");
+        assignWardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assignWardButtonActionPerformed(evt);
+            }
+        });
+        receptionistTaskButtonPanel.add(assignWardButton);
+
+        receptionistWorkStationPanel.add(receptionistTaskButtonPanel);
+
+        receptionistTaskPanel.setBackground(new java.awt.Color(255, 204, 51));
+        receptionistTaskPanel.setLayout(new java.awt.CardLayout());
+
+        patientInformationPanel.setBackground(new java.awt.Color(204, 102, 0));
+
+        titlePatientLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        titlePatientLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titlePatientLabel.setText("Add Patient Information");
+
+        javax.swing.GroupLayout patientInformationPanelLayout = new javax.swing.GroupLayout(patientInformationPanel);
+        patientInformationPanel.setLayout(patientInformationPanelLayout);
+        patientInformationPanelLayout.setHorizontalGroup(
+            patientInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(titlePatientLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+        patientInformationPanelLayout.setVerticalGroup(
+            patientInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(patientInformationPanelLayout.createSequentialGroup()
+                .addComponent(titlePatientLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 583, Short.MAX_VALUE))
+        );
+
+        receptionistTaskPanel.add(patientInformationPanel, "card2");
+
+        billPanel.setBackground(new java.awt.Color(51, 255, 51));
+
+        titleBillLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        titleBillLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleBillLabel.setText("Bill");
+
+        javax.swing.GroupLayout billPanelLayout = new javax.swing.GroupLayout(billPanel);
+        billPanel.setLayout(billPanelLayout);
+        billPanelLayout.setHorizontalGroup(
+            billPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(billPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(titleBillLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        billPanelLayout.setVerticalGroup(
+            billPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(billPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(titleBillLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(567, Short.MAX_VALUE))
+        );
+
+        receptionistTaskPanel.add(billPanel, "card3");
+
+        assignWardPanel.setBackground(new java.awt.Color(0, 153, 153));
+
+        titleAssignWardLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        titleAssignWardLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleAssignWardLabel.setText("Ward Assign");
+
+        javax.swing.GroupLayout assignWardPanelLayout = new javax.swing.GroupLayout(assignWardPanel);
+        assignWardPanel.setLayout(assignWardPanelLayout);
+        assignWardPanelLayout.setHorizontalGroup(
+            assignWardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(assignWardPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(titleAssignWardLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        assignWardPanelLayout.setVerticalGroup(
+            assignWardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(assignWardPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(titleAssignWardLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(567, Short.MAX_VALUE))
+        );
+
+        receptionistTaskPanel.add(assignWardPanel, "card4");
+
+        appointmentPanel.setBackground(new java.awt.Color(255, 255, 0));
+
+        titleAppointmentLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        titleAppointmentLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleAppointmentLabel.setText("Appointment");
+
+        javax.swing.GroupLayout appointmentPanelLayout = new javax.swing.GroupLayout(appointmentPanel);
+        appointmentPanel.setLayout(appointmentPanelLayout);
+        appointmentPanelLayout.setHorizontalGroup(
+            appointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(titleAppointmentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE)
+        );
+        appointmentPanelLayout.setVerticalGroup(
+            appointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(appointmentPanelLayout.createSequentialGroup()
+                .addComponent(titleAppointmentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 583, Short.MAX_VALUE))
+        );
+
+        receptionistTaskPanel.add(appointmentPanel, "card5");
+
+        receptionistWorkStationPanel.add(receptionistTaskPanel);
+
+        javax.swing.GroupLayout receptionistPanelLayout = new javax.swing.GroupLayout(receptionistPanel);
+        receptionistPanel.setLayout(receptionistPanelLayout);
+        receptionistPanelLayout.setHorizontalGroup(
+            receptionistPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(dateTimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(receptionistInformationLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(receptionistWorkStationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        receptionistPanelLayout.setVerticalGroup(
+            receptionistPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(receptionistPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(receptionistInformationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dateTimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(receptionistWorkStationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
 
@@ -103,16 +232,47 @@ public class ReceptionistFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(receptionistPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(receptionistPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 776, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void addPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPatientButtonActionPerformed
+        // TODO add your handling code here:
+        addPanelToReceptionistTaskPanel(patientInformationPanel);
+    }//GEN-LAST:event_addPatientButtonActionPerformed
+
+    private void appointmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appointmentButtonActionPerformed
+        // TODO add your handling code here:
+        
+        addPanelToReceptionistTaskPanel(appointmentPanel);
+    }//GEN-LAST:event_appointmentButtonActionPerformed
+
+    private void billButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billButtonActionPerformed
+        // TODO add your handling code here:
+        
+        addPanelToReceptionistTaskPanel(billPanel);
+    }//GEN-LAST:event_billButtonActionPerformed
+
+    private void assignWardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignWardButtonActionPerformed
+        // TODO add your handling code here:
+        
+        addPanelToReceptionistTaskPanel(assignWardPanel);
+    }//GEN-LAST:event_assignWardButtonActionPerformed
+    
+    public void addPanelToReceptionistTaskPanel(JPanel panel)
+    {
+        receptionistTaskPanel.removeAll();
+        receptionistTaskPanel.add(panel);
+        receptionistTaskPanel.repaint();
+        receptionistTaskPanel.revalidate();
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -152,12 +312,23 @@ public class ReceptionistFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton addPatientButton;
+    private javax.swing.JButton appointmentButton;
+    private javax.swing.JPanel appointmentPanel;
+    private javax.swing.JButton assignWardButton;
+    private javax.swing.JPanel assignWardPanel;
+    private javax.swing.JButton billButton;
+    private javax.swing.JPanel billPanel;
+    private javax.swing.JLabel dateTimeLabel;
+    private javax.swing.JPanel patientInformationPanel;
+    private javax.swing.JLabel receptionistInformationLabel;
+    private javax.swing.JPanel receptionistPanel;
+    private javax.swing.JPanel receptionistTaskButtonPanel;
+    private javax.swing.JPanel receptionistTaskPanel;
+    private javax.swing.JPanel receptionistWorkStationPanel;
+    private javax.swing.JLabel titleAppointmentLabel;
+    private javax.swing.JLabel titleAssignWardLabel;
+    private javax.swing.JLabel titleBillLabel;
+    private javax.swing.JLabel titlePatientLabel;
     // End of variables declaration//GEN-END:variables
 }
