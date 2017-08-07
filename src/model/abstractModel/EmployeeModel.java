@@ -3,32 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package model.abstractModel;
 
 /**
  *
  * @author SayefReyadh
  */
-public class PatientModel {
-    
+public abstract class EmployeeModel {
     private int id;
     private String nameString;
     private String genderString;
-    private String ageString;
-    private String contactString;
+    private int salary;
+    private String numberString;
     private String addressString;
 
-    public PatientModel() {
+    public EmployeeModel() {
     }
 
-
     
-    public PatientModel(int id, String nameString, String genderString, String ageString, String contactString, String addressString) {
+    
+    public EmployeeModel(int id, String nameString, String genderString, int salary, String numberString, String addressString) {
         this.id = id;
         this.nameString = nameString;
         this.genderString = genderString;
-        this.ageString = ageString;
-        this.contactString = contactString;
+        this.salary = salary;
+        this.numberString = numberString;
         this.addressString = addressString;
     }
 
@@ -40,8 +39,6 @@ public class PatientModel {
         this.id = id;
     }
 
-    
-    
     public String getNameString() {
         return nameString;
     }
@@ -58,20 +55,20 @@ public class PatientModel {
         this.genderString = genderString;
     }
 
-    public String getAgeString() {
-        return ageString;
+    public int getSalary() {
+        return salary;
     }
 
-    public void setAgeString(String ageString) {
-        this.ageString = ageString;
+    public void setSalary(int salary) {
+        this.salary = salary;
     }
 
-    public String getContactString() {
-        return contactString;
+    public String getNumberString() {
+        return numberString;
     }
 
-    public void setContactString(String contactString) {
-        this.contactString = contactString;
+    public void setNumberString(String numberString) {
+        this.numberString = numberString;
     }
 
     public String getAddressString() {
@@ -81,14 +78,7 @@ public class PatientModel {
     public void setAddressString(String addressString) {
         this.addressString = addressString;
     }
-
-    @Override
-    public String toString() {
-        return "PatientModel{" + "id=" + id + ", nameString=" + nameString + ", genderString=" + genderString + ", ageString=" + ageString + ", contactString=" + contactString + ", addressString=" + addressString + '}';
-    }
-
     
-    
-    
+   
     
 }
