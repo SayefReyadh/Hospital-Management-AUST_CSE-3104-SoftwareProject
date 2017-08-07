@@ -18,7 +18,7 @@ public class DoctorFrame extends javax.swing.JFrame {
      */
     public DoctorFrame() {
         initComponents();
-        addPanelToReceptionistTaskPanel(patientReportsPanel);
+        addPanelToReceptionistTaskPanel(appointmentPanel);
     }
 
     /**
@@ -32,7 +32,7 @@ public class DoctorFrame extends javax.swing.JFrame {
 
         receptionistPanel = new javax.swing.JPanel();
         dateTimeLabel = new javax.swing.JLabel();
-        receptionistInformationLabel = new javax.swing.JLabel();
+        doctorInformationLabel = new javax.swing.JLabel();
         doctorWorkStationPanel = new javax.swing.JPanel();
         doctorTaskButtonPanel = new javax.swing.JPanel();
         viewPatientButton = new javax.swing.JButton();
@@ -63,6 +63,12 @@ public class DoctorFrame extends javax.swing.JFrame {
         titleAppointmentLabel = new javax.swing.JLabel();
         appointmentScrollPane = new javax.swing.JScrollPane();
         appointmentTable = new javax.swing.JTable();
+        searchDateLabel = new javax.swing.JLabel();
+        searchDateTextField = new javax.swing.JTextField();
+        patientListPanel = new javax.swing.JPanel();
+        titlePatientListLabel = new javax.swing.JLabel();
+        patientListScrollPane = new javax.swing.JScrollPane();
+        patientListTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -78,9 +84,9 @@ public class DoctorFrame extends javax.swing.JFrame {
         dateTimeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dateTimeLabel.setText("Sayef Reyadh Khan --- ID : 15.01.04.128");
 
-        receptionistInformationLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        receptionistInformationLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        receptionistInformationLabel.setText("Date / Day / Time");
+        doctorInformationLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        doctorInformationLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        doctorInformationLabel.setText("Date / Day / Time");
 
         doctorWorkStationPanel.setBackground(new java.awt.Color(0, 204, 204));
         doctorWorkStationPanel.setForeground(new java.awt.Color(255, 255, 255));
@@ -325,6 +331,14 @@ public class DoctorFrame extends javax.swing.JFrame {
         ));
         appointmentScrollPane.setViewportView(appointmentTable);
 
+        searchDateLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        searchDateLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        searchDateLabel.setText("Date");
+
+        searchDateTextField.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        searchDateTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        searchDateTextField.setText("Default All");
+
         javax.swing.GroupLayout appointmentPanelLayout = new javax.swing.GroupLayout(appointmentPanel);
         appointmentPanel.setLayout(appointmentPanelLayout);
         appointmentPanelLayout.setHorizontalGroup(
@@ -332,19 +346,69 @@ public class DoctorFrame extends javax.swing.JFrame {
             .addComponent(titleAppointmentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 821, Short.MAX_VALUE)
             .addGroup(appointmentPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(appointmentScrollPane)
+                .addGroup(appointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(appointmentScrollPane)
+                    .addGroup(appointmentPanelLayout.createSequentialGroup()
+                        .addComponent(searchDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(searchDateTextField)))
                 .addContainerGap())
         );
         appointmentPanelLayout.setVerticalGroup(
             appointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(appointmentPanelLayout.createSequentialGroup()
                 .addComponent(titleAppointmentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(appointmentScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGroup(appointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(searchDateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(appointmentScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         receptionistTaskPanel.add(appointmentPanel, "card5");
+
+        patientListPanel.setBackground(new java.awt.Color(255, 255, 0));
+        patientListPanel.setMaximumSize(new java.awt.Dimension(821, 644));
+
+        titlePatientListLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        titlePatientListLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titlePatientListLabel.setText("Appointment");
+
+        patientListTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        patientListScrollPane.setViewportView(patientListTable);
+
+        javax.swing.GroupLayout patientListPanelLayout = new javax.swing.GroupLayout(patientListPanel);
+        patientListPanel.setLayout(patientListPanelLayout);
+        patientListPanelLayout.setHorizontalGroup(
+            patientListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(titlePatientListLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 821, Short.MAX_VALUE)
+            .addGroup(patientListPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(patientListScrollPane)
+                .addContainerGap())
+        );
+        patientListPanelLayout.setVerticalGroup(
+            patientListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(patientListPanelLayout.createSequentialGroup()
+                .addComponent(titlePatientListLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(patientListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        receptionistTaskPanel.add(patientListPanel, "card5");
 
         doctorWorkStationPanel.add(receptionistTaskPanel);
 
@@ -353,14 +417,14 @@ public class DoctorFrame extends javax.swing.JFrame {
         receptionistPanelLayout.setHorizontalGroup(
             receptionistPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(dateTimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(receptionistInformationLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(doctorInformationLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(doctorWorkStationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         receptionistPanelLayout.setVerticalGroup(
             receptionistPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(receptionistPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(receptionistInformationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(doctorInformationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(dateTimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -384,7 +448,7 @@ public class DoctorFrame extends javax.swing.JFrame {
 
     private void viewPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientButtonActionPerformed
         // TODO add your handling code here:
-        addPanelToReceptionistTaskPanel(patientInformationPanel);
+        addPanelToReceptionistTaskPanel(patientListPanel);
     }//GEN-LAST:event_viewPatientButtonActionPerformed
 
     private void viewAppointmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAppointmentButtonActionPerformed
@@ -448,6 +512,7 @@ public class DoctorFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane appointmentScrollPane;
     private javax.swing.JTable appointmentTable;
     private javax.swing.JLabel dateTimeLabel;
+    private javax.swing.JLabel doctorInformationLabel;
     private javax.swing.JPanel doctorTaskButtonPanel;
     private javax.swing.JPanel doctorWorkStationPanel;
     private javax.swing.JLabel patientAddressLabel;
@@ -462,18 +527,23 @@ public class DoctorFrame extends javax.swing.JFrame {
     private javax.swing.JLabel patientIdLabel;
     private javax.swing.JTextField patientIdTextField;
     private javax.swing.JPanel patientInformationPanel;
+    private javax.swing.JPanel patientListPanel;
+    private javax.swing.JScrollPane patientListScrollPane;
+    private javax.swing.JTable patientListTable;
     private javax.swing.JLabel patientNameLabel;
     private javax.swing.JLabel patientNameReportsLabel;
     private javax.swing.JTextField patientNameTextField;
     private javax.swing.JButton patientReportsButton;
     private javax.swing.JPanel patientReportsPanel;
-    private javax.swing.JLabel receptionistInformationLabel;
     private javax.swing.JPanel receptionistPanel;
     private javax.swing.JPanel receptionistTaskPanel;
     private javax.swing.JScrollPane reportsScrollPane;
     private javax.swing.JTable reportsTable;
+    private javax.swing.JLabel searchDateLabel;
+    private javax.swing.JTextField searchDateTextField;
     private javax.swing.JLabel titleAppointmentLabel;
     private javax.swing.JLabel titlePatientLabel;
+    private javax.swing.JLabel titlePatientListLabel;
     private javax.swing.JLabel titleReportsLabel;
     private javax.swing.JButton viewAppointmentButton;
     private javax.swing.JButton viewPatientButton;

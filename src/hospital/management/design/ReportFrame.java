@@ -18,7 +18,6 @@ public class ReportFrame extends javax.swing.JFrame {
      */
     public ReportFrame() {
         initComponents();
-        addPanelToReceptionistTaskPanel(patientReportsPanel);
     }
 
     /**
@@ -33,36 +32,14 @@ public class ReportFrame extends javax.swing.JFrame {
         receptionistPanel = new javax.swing.JPanel();
         dateTimeLabel = new javax.swing.JLabel();
         receptionistInformationLabel = new javax.swing.JLabel();
-        doctorWorkStationPanel = new javax.swing.JPanel();
-        doctorTaskButtonPanel = new javax.swing.JPanel();
-        viewPatientButton = new javax.swing.JButton();
-        viewAppointmentButton = new javax.swing.JButton();
-        receptionistTaskPanel = new javax.swing.JPanel();
-        patientInformationPanel = new javax.swing.JPanel();
-        titlePatientLabel = new javax.swing.JLabel();
-        patientReportsButton = new javax.swing.JButton();
-        patientNameLabel = new javax.swing.JLabel();
-        patientNameTextField = new javax.swing.JTextField();
-        patientGenderLabel = new javax.swing.JLabel();
-        patientContactLabel = new javax.swing.JLabel();
-        patientContactTextField = new javax.swing.JTextField();
-        patientIdLabel = new javax.swing.JLabel();
-        patientIdTextField = new javax.swing.JTextField();
-        patientAgeLabel = new javax.swing.JLabel();
-        patientAgeTextField = new javax.swing.JTextField();
-        patientAddressLabel = new javax.swing.JLabel();
-        patientAddressScrollPane = new javax.swing.JScrollPane();
-        patientAddressTextArea = new javax.swing.JTextArea();
-        patientAgeTextField1 = new javax.swing.JTextField();
-        patientReportsPanel = new javax.swing.JPanel();
-        titleReportsLabel = new javax.swing.JLabel();
-        patientNameReportsLabel = new javax.swing.JLabel();
-        reportsScrollPane = new javax.swing.JScrollPane();
-        reportsTable = new javax.swing.JTable();
-        appointmentPanel = new javax.swing.JPanel();
-        titleAppointmentLabel = new javax.swing.JLabel();
-        appointmentScrollPane = new javax.swing.JScrollPane();
-        appointmentTable = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        reportPatientNameLabel = new javax.swing.JLabel();
+        reportPatientNameTextField = new javax.swing.JTextField();
+        reportSubjectTextField = new javax.swing.JTextField();
+        reportSubjectLabel = new javax.swing.JLabel();
+        reportDetailsLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        reportDetailsTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -82,279 +59,84 @@ public class ReportFrame extends javax.swing.JFrame {
         receptionistInformationLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         receptionistInformationLabel.setText("Date / Day / Time");
 
-        doctorWorkStationPanel.setBackground(new java.awt.Color(0, 204, 204));
-        doctorWorkStationPanel.setForeground(new java.awt.Color(255, 255, 255));
-        doctorWorkStationPanel.setLayout(new javax.swing.BoxLayout(doctorWorkStationPanel, javax.swing.BoxLayout.LINE_AXIS));
+        reportPatientNameLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        reportPatientNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        reportPatientNameLabel.setText("Patient Name");
 
-        doctorTaskButtonPanel.setLayout(new java.awt.GridLayout(4, 1));
+        reportPatientNameTextField.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        reportPatientNameTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        reportPatientNameTextField.setText("Name");
+        reportPatientNameTextField.setEnabled(false);
 
-        viewPatientButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        viewPatientButton.setText("View Patients");
-        viewPatientButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewPatientButtonActionPerformed(evt);
-            }
-        });
-        doctorTaskButtonPanel.add(viewPatientButton);
+        reportSubjectTextField.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        reportSubjectTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        reportSubjectTextField.setText("Default All");
+        reportSubjectTextField.setEnabled(false);
 
-        viewAppointmentButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        viewAppointmentButton.setText("View Appointment");
-        viewAppointmentButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewAppointmentButtonActionPerformed(evt);
-            }
-        });
-        doctorTaskButtonPanel.add(viewAppointmentButton);
+        reportSubjectLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        reportSubjectLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        reportSubjectLabel.setText("Report Subject");
 
-        doctorWorkStationPanel.add(doctorTaskButtonPanel);
+        reportDetailsLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        reportDetailsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        reportDetailsLabel.setText("Details");
 
-        receptionistTaskPanel.setBackground(new java.awt.Color(255, 204, 51));
-        receptionistTaskPanel.setMaximumSize(new java.awt.Dimension(821, 644));
-        receptionistTaskPanel.setLayout(new java.awt.CardLayout());
+        reportDetailsTextArea.setColumns(20);
+        reportDetailsTextArea.setRows(5);
+        reportDetailsTextArea.setEnabled(false);
+        jScrollPane1.setViewportView(reportDetailsTextArea);
 
-        patientInformationPanel.setBackground(new java.awt.Color(204, 102, 0));
-        patientInformationPanel.setMaximumSize(new java.awt.Dimension(821, 644));
-        patientInformationPanel.setPreferredSize(new java.awt.Dimension(821, 644));
-
-        titlePatientLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        titlePatientLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titlePatientLabel.setText("Patient Information");
-
-        patientReportsButton.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        patientReportsButton.setText("Patient Reports");
-
-        patientNameLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        patientNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        patientNameLabel.setText("Patient Name");
-
-        patientNameTextField.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        patientNameTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        patientNameTextField.setEnabled(false);
-
-        patientGenderLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        patientGenderLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        patientGenderLabel.setText("Patient Gender");
-
-        patientContactLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        patientContactLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        patientContactLabel.setText("Patient Contact");
-
-        patientContactTextField.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        patientContactTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        patientContactTextField.setEnabled(false);
-
-        patientIdLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        patientIdLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        patientIdLabel.setText("Patient ID");
-
-        patientIdTextField.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        patientIdTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        patientIdTextField.setEnabled(false);
-
-        patientAgeLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        patientAgeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        patientAgeLabel.setText("Patient Age");
-
-        patientAgeTextField.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        patientAgeTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        patientAgeTextField.setEnabled(false);
-
-        patientAddressLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        patientAddressLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        patientAddressLabel.setText("Patient Address");
-
-        patientAddressTextArea.setColumns(20);
-        patientAddressTextArea.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        patientAddressTextArea.setRows(5);
-        patientAddressTextArea.setEnabled(false);
-        patientAddressScrollPane.setViewportView(patientAddressTextArea);
-
-        patientAgeTextField1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        patientAgeTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        patientAgeTextField1.setEnabled(false);
-
-        javax.swing.GroupLayout patientInformationPanelLayout = new javax.swing.GroupLayout(patientInformationPanel);
-        patientInformationPanel.setLayout(patientInformationPanelLayout);
-        patientInformationPanelLayout.setHorizontalGroup(
-            patientInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(patientInformationPanelLayout.createSequentialGroup()
-                .addComponent(titlePatientLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 816, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 5, Short.MAX_VALUE))
-            .addGroup(patientInformationPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(patientInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(patientInformationPanelLayout.createSequentialGroup()
-                        .addComponent(patientNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(reportPatientNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(patientNameTextField))
-                    .addComponent(patientReportsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(patientInformationPanelLayout.createSequentialGroup()
-                        .addComponent(patientGenderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(reportPatientNameTextField))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(reportSubjectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(patientAgeTextField1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(patientAgeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(patientAgeTextField))
-                    .addGroup(patientInformationPanelLayout.createSequentialGroup()
-                        .addComponent(patientContactLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(reportSubjectTextField))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(reportDetailsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(patientContactTextField))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientInformationPanelLayout.createSequentialGroup()
-                        .addComponent(patientIdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(patientIdTextField))
-                    .addGroup(patientInformationPanelLayout.createSequentialGroup()
-                        .addComponent(patientAddressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(patientAddressScrollPane)))
+                        .addComponent(jScrollPane1)))
                 .addContainerGap())
         );
-        patientInformationPanelLayout.setVerticalGroup(
-            patientInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(patientInformationPanelLayout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addComponent(titlePatientLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addGroup(patientInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(patientIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(patientIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(patientInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(patientNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(patientNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(patientInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(patientGenderLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
-                    .addGroup(patientInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(patientAgeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
-                        .addComponent(patientAgeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(patientAgeTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(patientInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(patientContactLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
-                    .addComponent(patientContactTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(patientInformationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(patientInformationPanelLayout.createSequentialGroup()
-                        .addComponent(patientAddressLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
-                        .addGap(117, 117, 117))
-                    .addGroup(patientInformationPanelLayout.createSequentialGroup()
-                        .addComponent(patientAddressScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(patientReportsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        receptionistTaskPanel.add(patientInformationPanel, "card2");
-
-        patientReportsPanel.setBackground(new java.awt.Color(0, 153, 153));
-        patientReportsPanel.setMaximumSize(new java.awt.Dimension(821, 644));
-
-        titleReportsLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        titleReportsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleReportsLabel.setText("Reports");
-
-        patientNameReportsLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        patientNameReportsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        patientNameReportsLabel.setText("Reports");
-
-        reportsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        reportsScrollPane.setViewportView(reportsTable);
-
-        javax.swing.GroupLayout patientReportsPanelLayout = new javax.swing.GroupLayout(patientReportsPanel);
-        patientReportsPanel.setLayout(patientReportsPanelLayout);
-        patientReportsPanelLayout.setHorizontalGroup(
-            patientReportsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(patientReportsPanelLayout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(patientReportsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titleReportsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(reportsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 791, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(patientReportsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(patientReportsPanelLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(patientNameReportsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 791, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
-        patientReportsPanelLayout.setVerticalGroup(
-            patientReportsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(patientReportsPanelLayout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(titleReportsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(reportPatientNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(reportPatientNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(reportsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
-            .addGroup(patientReportsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(patientReportsPanelLayout.createSequentialGroup()
-                    .addGap(10, 10, 10)
-                    .addComponent(patientNameReportsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(569, Short.MAX_VALUE)))
-        );
-
-        receptionistTaskPanel.add(patientReportsPanel, "card4");
-
-        appointmentPanel.setBackground(new java.awt.Color(255, 255, 0));
-        appointmentPanel.setMaximumSize(new java.awt.Dimension(821, 644));
-
-        titleAppointmentLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        titleAppointmentLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleAppointmentLabel.setText("Appointment");
-
-        appointmentTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        appointmentScrollPane.setViewportView(appointmentTable);
-
-        javax.swing.GroupLayout appointmentPanelLayout = new javax.swing.GroupLayout(appointmentPanel);
-        appointmentPanel.setLayout(appointmentPanelLayout);
-        appointmentPanelLayout.setHorizontalGroup(
-            appointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleAppointmentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 821, Short.MAX_VALUE)
-            .addGroup(appointmentPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(appointmentScrollPane)
-                .addContainerGap())
-        );
-        appointmentPanelLayout.setVerticalGroup(
-            appointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(appointmentPanelLayout.createSequentialGroup()
-                .addComponent(titleAppointmentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(reportSubjectLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(reportSubjectTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(appointmentScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(reportDetailsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE))
                 .addContainerGap())
         );
-
-        receptionistTaskPanel.add(appointmentPanel, "card5");
-
-        doctorWorkStationPanel.add(receptionistTaskPanel);
 
         javax.swing.GroupLayout receptionistPanelLayout = new javax.swing.GroupLayout(receptionistPanel);
         receptionistPanel.setLayout(receptionistPanelLayout);
         receptionistPanelLayout.setHorizontalGroup(
             receptionistPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dateTimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(dateTimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 1018, Short.MAX_VALUE)
             .addComponent(receptionistInformationLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(doctorWorkStationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(receptionistPanelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         receptionistPanelLayout.setVerticalGroup(
             receptionistPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -363,9 +145,9 @@ public class ReportFrame extends javax.swing.JFrame {
                 .addComponent(receptionistInformationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(dateTimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(doctorWorkStationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -376,30 +158,13 @@ public class ReportFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(receptionistPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 776, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(receptionistPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void viewPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientButtonActionPerformed
-        // TODO add your handling code here:
-        addPanelToReceptionistTaskPanel(patientInformationPanel);
-    }//GEN-LAST:event_viewPatientButtonActionPerformed
-
-    private void viewAppointmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAppointmentButtonActionPerformed
-        // TODO add your handling code here:
-        
-        addPanelToReceptionistTaskPanel(appointmentPanel);
-    }//GEN-LAST:event_viewAppointmentButtonActionPerformed
     
-    public void addPanelToReceptionistTaskPanel(JPanel panel)
-    {
-        receptionistTaskPanel.removeAll();
-        receptionistTaskPanel.add(panel);
-        receptionistTaskPanel.repaint();
-        receptionistTaskPanel.revalidate();
-    }
+    
     
     /**
      * @param args the command line arguments
@@ -452,38 +217,16 @@ public class ReportFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel appointmentPanel;
-    private javax.swing.JScrollPane appointmentScrollPane;
-    private javax.swing.JTable appointmentTable;
     private javax.swing.JLabel dateTimeLabel;
-    private javax.swing.JPanel doctorTaskButtonPanel;
-    private javax.swing.JPanel doctorWorkStationPanel;
-    private javax.swing.JLabel patientAddressLabel;
-    private javax.swing.JScrollPane patientAddressScrollPane;
-    private javax.swing.JTextArea patientAddressTextArea;
-    private javax.swing.JLabel patientAgeLabel;
-    private javax.swing.JTextField patientAgeTextField;
-    private javax.swing.JTextField patientAgeTextField1;
-    private javax.swing.JLabel patientContactLabel;
-    private javax.swing.JTextField patientContactTextField;
-    private javax.swing.JLabel patientGenderLabel;
-    private javax.swing.JLabel patientIdLabel;
-    private javax.swing.JTextField patientIdTextField;
-    private javax.swing.JPanel patientInformationPanel;
-    private javax.swing.JLabel patientNameLabel;
-    private javax.swing.JLabel patientNameReportsLabel;
-    private javax.swing.JTextField patientNameTextField;
-    private javax.swing.JButton patientReportsButton;
-    private javax.swing.JPanel patientReportsPanel;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel receptionistInformationLabel;
     private javax.swing.JPanel receptionistPanel;
-    private javax.swing.JPanel receptionistTaskPanel;
-    private javax.swing.JScrollPane reportsScrollPane;
-    private javax.swing.JTable reportsTable;
-    private javax.swing.JLabel titleAppointmentLabel;
-    private javax.swing.JLabel titlePatientLabel;
-    private javax.swing.JLabel titleReportsLabel;
-    private javax.swing.JButton viewAppointmentButton;
-    private javax.swing.JButton viewPatientButton;
+    private javax.swing.JLabel reportDetailsLabel;
+    private javax.swing.JTextArea reportDetailsTextArea;
+    private javax.swing.JLabel reportPatientNameLabel;
+    private javax.swing.JTextField reportPatientNameTextField;
+    private javax.swing.JLabel reportSubjectLabel;
+    private javax.swing.JTextField reportSubjectTextField;
     // End of variables declaration//GEN-END:variables
 }
