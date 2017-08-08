@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package database;
+package database.model;
 
 import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import java.sql.Connection;
@@ -92,13 +92,5 @@ public abstract class DatabaseConnection {
         closeConnection();
         return false;
     }
-
-    abstract public void insert();
-
-    abstract public void update();
-
-    abstract public void delete();
-
-    abstract public void fetch();
 
 }

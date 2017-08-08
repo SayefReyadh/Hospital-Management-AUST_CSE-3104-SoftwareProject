@@ -5,7 +5,9 @@
  */
 package hospital.management.design;
 
+import database.ReportDatabase;
 import javax.swing.JPanel;
+import model.ReportModel;
 
 /**
  *
@@ -79,6 +81,11 @@ public class LaboratorianFrame extends javax.swing.JFrame {
 
         addReportButton.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         addReportButton.setText("Add");
+        addReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addReportButtonActionPerformed(evt);
+            }
+        });
 
         reportPatientIdTextField.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         reportPatientIdTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -139,7 +146,7 @@ public class LaboratorianFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 971, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,6 +157,19 @@ public class LaboratorianFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addReportButtonActionPerformed
+        // TODO add your handling code here:
+        ReportDatabase reportDatabase = new ReportDatabase();
+        
+        ReportModel reportModel = new ReportModel();
+        reportModel.setPatientId(Integer.parseInt(reportPatientIdTextField.getText()));
+        reportModel.setDoctorId(Integer.parseInt(reportDoctorIdTextField.getText()));
+        reportModel.setReportDetailsString(reportDetailsTextArea.getText());
+        reportModel.setReportSubjectString(reportSubjectTextField.getText());
+        
+        reportDatabase.setReportInformation(reportModel);
+    }//GEN-LAST:event_addReportButtonActionPerformed
     
     
     

@@ -5,7 +5,9 @@
  */
 package hospital.management.design;
 
+import database.ReportDatabase;
 import javax.swing.JPanel;
+import model.ReportModel;
 
 /**
  *
@@ -19,7 +21,19 @@ public class ReportFrame extends javax.swing.JFrame {
     public ReportFrame() {
         initComponents();
     }
-
+        
+    public ReportFrame(int reportId) {
+        initComponents();
+        ReportDatabase reportDatabase = new ReportDatabase();
+        ReportModel reportModel = reportDatabase.getReportInformation(reportId);
+        
+        reportDetailsTextArea.setText(reportModel.getReportDetailsString());
+        reportPatientNameTextField.setText(String.valueOf(reportModel.getPatientId()));
+        reportSubjectTextField.setText(reportModel.getReportSubjectString());
+        
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,7 +64,7 @@ public class ReportFrame extends javax.swing.JFrame {
 
         reportPatientNameLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         reportPatientNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        reportPatientNameLabel.setText("Patient Name");
+        reportPatientNameLabel.setText("Patient Id");
 
         reportPatientNameTextField.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         reportPatientNameTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);

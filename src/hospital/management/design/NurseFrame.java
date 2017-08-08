@@ -5,7 +5,9 @@
  */
 package hospital.management.design;
 
+import database.NurseDatabase;
 import javax.swing.JPanel;
+import model.NurseModel;
 
 /**
  *
@@ -13,11 +15,23 @@ import javax.swing.JPanel;
  */
 public class NurseFrame extends javax.swing.JFrame {
 
+    private NurseModel nurseModel;
+    private NurseDatabase nurseDatabase;
     /**
      * Creates new form Login
      */
     public NurseFrame() {
         initComponents();
+    }
+
+    public NurseFrame(int nurseId) {
+        initComponents();
+        nurseDatabase = new NurseDatabase();
+        
+        nurseModel = nurseDatabase.getNurseInformation(nurseId);
+        nurseModel.setPatientList(nurseModel.getPatientList());
+        nurseModel.setWardArrayString(nurseDatabase.getWardNameArrayList(nurseId));
+        
     }
 
     /**
