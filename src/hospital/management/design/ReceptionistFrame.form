@@ -247,6 +247,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Add Patient Information"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addPatientInformationButtonActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="patientNameLabel">
                   <Properties>

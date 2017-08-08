@@ -15,17 +15,19 @@ import model.abstractModel.EmployeeModel;
 public class DoctorModel extends EmployeeModel{
     private String typeString;
     private ArrayList<PatientModel> patientList;
-    private ArrayList<PatientModel> appointmentList;
+    private ArrayList<AppointmentModel> appointmentList;
 
     public DoctorModel() {
     }
 
-    public DoctorModel(int id, String nameString, String genderString, int salary, String numberString, String addressString,String typeString, ArrayList<PatientModel> patientList, ArrayList<PatientModel> appointmentList) {
+    public DoctorModel(String typeString, ArrayList<PatientModel> patientList, ArrayList<AppointmentModel> appointmentList, int id, String nameString, String genderString, int salary, String numberString, String addressString) {
         super(id, nameString, genderString, salary, numberString, addressString);
         this.typeString = typeString;
         this.patientList = patientList;
         this.appointmentList = appointmentList;
     }
+
+    
 
     public String getTypeString() {
         return typeString;
@@ -43,13 +45,16 @@ public class DoctorModel extends EmployeeModel{
         this.patientList = patientList;
     }
 
-    public ArrayList<PatientModel> getAppointmentList() {
+    public ArrayList<AppointmentModel> getAppointmentList() {
         return appointmentList;
     }
 
-    public void setAppointmentList(ArrayList<PatientModel> appointmentList) {
+    public void setAppointmentList(ArrayList<AppointmentModel> appointmentList) {
         this.appointmentList = appointmentList;
     }
+
+    
+   
   
     
     

@@ -5,7 +5,9 @@
  */
 package hospital.management.design;
 
+import database.DoctorDatabase;
 import javax.swing.JPanel;
+import model.DoctorModel;
 
 /**
  *
@@ -13,13 +15,30 @@ import javax.swing.JPanel;
  */
 public class DoctorFrame extends javax.swing.JFrame {
 
+    private DoctorModel doctorModel;
+    private DoctorDatabase doctorDatabase;
     /**
      * Creates new form Login
      */
     public DoctorFrame() {
         initComponents();
-        addPanelToReceptionistTaskPanel(appointmentPanel);
+        addPanelToDoctorTaskPanel(appointmentPanel);
     }
+    
+    public DoctorFrame(int doctorId) {
+        initComponents();
+        addPanelToDoctorTaskPanel(appointmentPanel);
+        
+        doctorDatabase = new DoctorDatabase();
+        doctorModel = doctorDatabase.getDoctorInformation(doctorId);
+        
+        doctorModel.setAppointmentList(doctorDatabase.getAppointmentModels());
+        ///set this arraylist to the appointment table
+        //appointmentTable
+        
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,6 +81,7 @@ public class DoctorFrame extends javax.swing.JFrame {
         appointmentTable = new javax.swing.JTable();
         searchDateLabel = new javax.swing.JLabel();
         searchDateTextField = new javax.swing.JTextField();
+        searchButton = new javax.swing.JButton();
         patientListPanel = new javax.swing.JPanel();
         titlePatientListLabel = new javax.swing.JLabel();
         patientListScrollPane = new javax.swing.JScrollPane();
@@ -326,11 +346,18 @@ public class DoctorFrame extends javax.swing.JFrame {
         searchDateTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         searchDateTextField.setText("Default All");
 
+        searchButton.setText("Search");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout appointmentPanelLayout = new javax.swing.GroupLayout(appointmentPanel);
         appointmentPanel.setLayout(appointmentPanelLayout);
         appointmentPanelLayout.setHorizontalGroup(
             appointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleAppointmentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE)
+            .addComponent(titleAppointmentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(appointmentPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(appointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -338,17 +365,24 @@ public class DoctorFrame extends javax.swing.JFrame {
                     .addGroup(appointmentPanelLayout.createSequentialGroup()
                         .addComponent(searchDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(searchDateTextField)))
+                        .addComponent(searchDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 11, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         appointmentPanelLayout.setVerticalGroup(
             appointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(appointmentPanelLayout.createSequentialGroup()
                 .addComponent(titleAppointmentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addGroup(appointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(searchDateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(appointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(appointmentPanelLayout.createSequentialGroup()
+                        .addGap(0, 4, Short.MAX_VALUE)
+                        .addGroup(appointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(searchDateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(searchDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(appointmentScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -415,16 +449,37 @@ public class DoctorFrame extends javax.swing.JFrame {
 
     private void viewPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientButtonActionPerformed
         // TODO add your handling code here:
-        addPanelToReceptionistTaskPanel(patientListPanel);
+        addPanelToDoctorTaskPanel(patientListPanel);
+        doctorModel.setPatientList(doctorDatabase.getPatientsList());
+        ///set this arraylist to the patientlist table
+        //patientsTable
+        //might have to repaint again
+        
     }//GEN-LAST:event_viewPatientButtonActionPerformed
 
     private void viewAppointmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAppointmentButtonActionPerformed
         // TODO add your handling code here:
         
-        addPanelToReceptionistTaskPanel(appointmentPanel);
+        addPanelToDoctorTaskPanel(appointmentPanel);
+        doctorModel.setAppointmentList(doctorDatabase.getAppointmentModels());
+        ///set this arraylist to the appointment table
+        //appointmentTable
+        //might have to repaint again
+        
     }//GEN-LAST:event_viewAppointmentButtonActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+        
+        String date = "2017-05-01"; //get the date from searchDateTextField
+        doctorDatabase.getAppointmentModels(date);
+        doctorModel.setAppointmentList(doctorDatabase.getAppointmentModels());
+        ///set this arraylist to the appointment table
+        //appointmentTable
+        
+    }//GEN-LAST:event_searchButtonActionPerformed
     
-    public void addPanelToReceptionistTaskPanel(JPanel panel)
+    public void addPanelToDoctorTaskPanel(JPanel panel)
     {
         doctorTaskPanel.removeAll();
         doctorTaskPanel.add(panel);
@@ -503,6 +558,7 @@ public class DoctorFrame extends javax.swing.JFrame {
     private javax.swing.JPanel patientReportsPanel;
     private javax.swing.JScrollPane reportsScrollPane;
     private javax.swing.JTable reportsTable;
+    private javax.swing.JButton searchButton;
     private javax.swing.JLabel searchDateLabel;
     private javax.swing.JTextField searchDateTextField;
     private javax.swing.JLabel titleAppointmentLabel;

@@ -5,7 +5,9 @@
  */
 package hospital.management.design;
 
+import database.PatientDatabase;
 import javax.swing.JPanel;
+import model.PatientModel;
 
 /**
  *
@@ -177,6 +179,11 @@ public class ReceptionistFrame extends javax.swing.JFrame {
 
         addPatientInformationButton.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         addPatientInformationButton.setText("Add Patient Information");
+        addPatientInformationButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addPatientInformationButtonActionPerformed(evt);
+            }
+        });
 
         patientNameLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         patientNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -828,6 +835,18 @@ public class ReceptionistFrame extends javax.swing.JFrame {
         
         addPanelToReceptionistTaskPanel(assignWardPanel);
     }//GEN-LAST:event_assignWardButtonActionPerformed
+
+    private void addPatientInformationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPatientInformationButtonActionPerformed
+        // TODO add your handling code here:
+        PatientDatabase patientDatabase = new PatientDatabase();
+        PatientModel patientModel = new PatientModel(
+                Integer.parseInt(patientIdTextField.getText()), 
+                patientNameTextField.getText(), 
+                (String) patientGenderComboBox.getSelectedItem(), 
+                patientAgeTextField.getText(), 
+                patientContactTextField.getText(), 
+                patientAddressTextArea.getText());
+    }//GEN-LAST:event_addPatientInformationButtonActionPerformed
     
     public void addPanelToReceptionistTaskPanel(JPanel panel)
     {
