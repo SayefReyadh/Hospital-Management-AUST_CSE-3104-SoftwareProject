@@ -29,10 +29,7 @@ public class NurseFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        receptionistPanel = new javax.swing.JPanel();
-        dateTimeLabel = new javax.swing.JLabel();
-        laboratorianInformationLabel = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        nursePanel = new javax.swing.JPanel();
         wardNameLabel = new javax.swing.JLabel();
         wardNameComboBox = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -46,15 +43,7 @@ public class NurseFrame extends javax.swing.JFrame {
         setLocation(new java.awt.Point(200, 20));
         setResizable(false);
 
-        receptionistPanel.setBackground(new java.awt.Color(0, 153, 153));
-
-        dateTimeLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        dateTimeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        dateTimeLabel.setText("Sayef Reyadh Khan --- ID : 15.01.04.128");
-
-        laboratorianInformationLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        laboratorianInformationLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        laboratorianInformationLabel.setText("Date / Day / Time");
+        nursePanel.setBackground(new java.awt.Color(0, 153, 153));
 
         wardNameLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         wardNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -77,64 +66,35 @@ public class NurseFrame extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(patientListTable);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(wardNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(wardNameComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+        javax.swing.GroupLayout nursePanelLayout = new javax.swing.GroupLayout(nursePanel);
+        nursePanel.setLayout(nursePanelLayout);
+        nursePanelLayout.setHorizontalGroup(
+            nursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2)
+            .addGroup(nursePanelLayout.createSequentialGroup()
+                .addComponent(wardNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(wardNameComboBox, 0, 336, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(wardNameComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
-                    .addComponent(wardNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        nursePanelLayout.setVerticalGroup(
+            nursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(nursePanelLayout.createSequentialGroup()
+                .addGroup(nursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(wardNameComboBox)
+                    .addComponent(wardNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout receptionistPanelLayout = new javax.swing.GroupLayout(receptionistPanel);
-        receptionistPanel.setLayout(receptionistPanelLayout);
-        receptionistPanelLayout.setHorizontalGroup(
-            receptionistPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dateTimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 1018, Short.MAX_VALUE)
-            .addComponent(laboratorianInformationLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(receptionistPanelLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        receptionistPanelLayout.setVerticalGroup(
-            receptionistPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(receptionistPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(laboratorianInformationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(dateTimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(receptionistPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(nursePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(receptionistPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(nursePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -241,12 +201,9 @@ public class NurseFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel dateTimeLabel;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel laboratorianInformationLabel;
+    private javax.swing.JPanel nursePanel;
     private javax.swing.JTable patientListTable;
-    private javax.swing.JPanel receptionistPanel;
     private javax.swing.JComboBox<String> wardNameComboBox;
     private javax.swing.JLabel wardNameLabel;
     // End of variables declaration//GEN-END:variables

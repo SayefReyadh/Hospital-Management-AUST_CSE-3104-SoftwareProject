@@ -31,9 +31,6 @@ public class ReceptionistFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         receptionistPanel = new javax.swing.JPanel();
-        dateTimeLabel = new javax.swing.JLabel();
-        receptionistInformationLabel = new javax.swing.JLabel();
-        receptionistWorkStationPanel = new javax.swing.JPanel();
         receptionistTaskButtonPanel = new javax.swing.JPanel();
         addPatientButton = new javax.swing.JButton();
         appointmentButton = new javax.swing.JButton();
@@ -124,18 +121,7 @@ public class ReceptionistFrame extends javax.swing.JFrame {
         setResizable(false);
 
         receptionistPanel.setBackground(new java.awt.Color(0, 153, 153));
-
-        dateTimeLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        dateTimeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        dateTimeLabel.setText("Sayef Reyadh Khan --- ID : 15.01.04.128");
-
-        receptionistInformationLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        receptionistInformationLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        receptionistInformationLabel.setText("Date / Day / Time");
-
-        receptionistWorkStationPanel.setBackground(new java.awt.Color(0, 204, 204));
-        receptionistWorkStationPanel.setForeground(new java.awt.Color(255, 255, 255));
-        receptionistWorkStationPanel.setLayout(new javax.swing.BoxLayout(receptionistWorkStationPanel, javax.swing.BoxLayout.LINE_AXIS));
+        receptionistPanel.setLayout(new javax.swing.BoxLayout(receptionistPanel, javax.swing.BoxLayout.LINE_AXIS));
 
         receptionistTaskButtonPanel.setLayout(new java.awt.GridLayout(4, 1));
 
@@ -175,7 +161,7 @@ public class ReceptionistFrame extends javax.swing.JFrame {
         });
         receptionistTaskButtonPanel.add(assignWardButton);
 
-        receptionistWorkStationPanel.add(receptionistTaskButtonPanel);
+        receptionistPanel.add(receptionistTaskButtonPanel);
 
         receptionistTaskPanel.setBackground(new java.awt.Color(255, 204, 51));
         receptionistTaskPanel.setMaximumSize(new java.awt.Dimension(821, 644));
@@ -538,7 +524,7 @@ public class ReceptionistFrame extends javax.swing.JFrame {
         patientnameWardAssignTextField.setText("Sayef Reyadh Khan");
         patientnameWardAssignTextField.setEnabled(false);
 
-        wardAssignButton.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        wardAssignButton.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         wardAssignButton.setText("Assign");
 
         wardAssignDateLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -633,8 +619,9 @@ public class ReceptionistFrame extends javax.swing.JFrame {
                 .addGroup(assignWardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(wardAssignDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(wardAssignDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(wardAssignButton))
+                .addGap(33, 33, 33)
+                .addComponent(wardAssignButton)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         receptionistTaskPanel.add(assignWardPanel, "card4");
@@ -803,27 +790,7 @@ public class ReceptionistFrame extends javax.swing.JFrame {
 
         receptionistTaskPanel.add(appointmentPanel, "card5");
 
-        receptionistWorkStationPanel.add(receptionistTaskPanel);
-
-        javax.swing.GroupLayout receptionistPanelLayout = new javax.swing.GroupLayout(receptionistPanel);
-        receptionistPanel.setLayout(receptionistPanelLayout);
-        receptionistPanelLayout.setHorizontalGroup(
-            receptionistPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dateTimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(receptionistInformationLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(receptionistWorkStationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        receptionistPanelLayout.setVerticalGroup(
-            receptionistPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(receptionistPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(receptionistInformationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(dateTimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(receptionistWorkStationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-        );
+        receptionistPanel.add(receptionistTaskPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -833,7 +800,7 @@ public class ReceptionistFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(receptionistPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 776, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(receptionistPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -934,7 +901,6 @@ public class ReceptionistFrame extends javax.swing.JFrame {
     private javax.swing.JTable billTable;
     private javax.swing.JScrollPane billTableScrollPane;
     private javax.swing.JLabel biullIdLabel;
-    private javax.swing.JLabel dateTimeLabel;
     private javax.swing.JLabel doctorIdAppointmentLabel;
     private javax.swing.JTextField doctorIdAppointmentTextField;
     private javax.swing.JLabel doctorNameAppointmentLabel;
@@ -967,11 +933,9 @@ public class ReceptionistFrame extends javax.swing.JFrame {
     private javax.swing.JTextField patientnameWardAssignTextField;
     private javax.swing.JLabel quantityBillLabel;
     private javax.swing.JTextField quantityBillTextField;
-    private javax.swing.JLabel receptionistInformationLabel;
     private javax.swing.JPanel receptionistPanel;
     private javax.swing.JPanel receptionistTaskButtonPanel;
     private javax.swing.JPanel receptionistTaskPanel;
-    private javax.swing.JPanel receptionistWorkStationPanel;
     private javax.swing.JLabel titleAppointmentLabel;
     private javax.swing.JLabel titleAssignWardLabel;
     private javax.swing.JLabel titleBillLabel;
