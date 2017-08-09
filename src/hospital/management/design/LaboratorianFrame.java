@@ -21,6 +21,10 @@ public class LaboratorianFrame extends javax.swing.JFrame {
     public LaboratorianFrame() {
         initComponents();
     }
+    
+    public LaboratorianFrame(int laboratorianId) {
+        initComponents();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,7 +49,6 @@ public class LaboratorianFrame extends javax.swing.JFrame {
         reportPatientIdLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
         setBounds(new java.awt.Rectangle(200, 50, 1000, 700));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -167,8 +170,11 @@ public class LaboratorianFrame extends javax.swing.JFrame {
         reportModel.setDoctorId(Integer.parseInt(reportDoctorIdTextField.getText()));
         reportModel.setReportDetailsString(reportDetailsTextArea.getText());
         reportModel.setReportSubjectString(reportSubjectTextField.getText());
-        
-        reportDatabase.setReportInformation(reportModel);
+        System.out.println(reportModel.toString());
+        boolean result = reportDatabase.setReportInformation(reportModel);
+        if (result) {
+            initComponents();
+        }
     }//GEN-LAST:event_addReportButtonActionPerformed
     
     

@@ -6,8 +6,16 @@
 package hospital.management.design;
 
 import database.NurseDatabase;
-import javax.swing.JPanel;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import model.NurseModel;
+import model.PatientModel;
 
 /**
  *
@@ -17,21 +25,102 @@ public class NurseFrame extends javax.swing.JFrame {
 
     private NurseModel nurseModel;
     private NurseDatabase nurseDatabase;
+    
+    private static int nurseID;
     /**
      * Creates new form Login
      */
     public NurseFrame() {
+        nurseID = 10234;
+        
+        nurseDatabase = new NurseDatabase();
+        nurseModel = nurseDatabase.getNurseInformation(10234);
+        nurseModel.setPatientList(nurseModel.getPatientList());
+        nurseModel.setWardArrayString(nurseDatabase.getWardNameArrayList(10234));
+       
         initComponents();
+        
+        loadWardNameComboBox();
     }
 
     public NurseFrame(int nurseId) {
-        initComponents();
-        nurseDatabase = new NurseDatabase();
+        nurseID = nurseId;
         
+        nurseDatabase = new NurseDatabase();
         nurseModel = nurseDatabase.getNurseInformation(nurseId);
         nurseModel.setPatientList(nurseModel.getPatientList());
         nurseModel.setWardArrayString(nurseDatabase.getWardNameArrayList(nurseId));
+       
         
+        initComponents();
+        
+        loadWardNameComboBox();
+    }
+    
+    public void loadWardNameComboBox() {
+        
+        wardNameComboBox.removeAll();
+        
+        ArrayList<String> cols = nurseDatabase.getWardNameArrayList(nurseID);
+        
+        for (String col: cols) {
+        wardNameComboBox.addItem(col);
+        
+        }
+        
+        
+        loadTableData( (String) wardNameComboBox.getSelectedItem());
+        
+        wardNameComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+        loadTableData( (String) wardNameComboBox.getSelectedItem());
+            }
+        });
+        
+    }
+    
+    public void loadTableData(String wardName) {
+        ArrayList<String> cols = new ArrayList<>();
+        DefaultTableModel mTableModel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        
+        cols.add("Patient Name");
+        cols.add("Patient Age");
+        cols.add("Patient Address");
+        
+        for (String col : cols) {
+           mTableModel.addColumn(col);
+        }
+        
+        ArrayList<PatientModel> patients = nurseDatabase.getPatientList((String) wardNameComboBox.getSelectedItem());
+        
+        for (int i = 0 ; i < patients.size() ; i++) {
+            PatientModel model = patients.get(i);
+            String[] row = {model.getNameString(),model.getAgeString(), model.getAddressString()};
+            
+            mTableModel.addRow(row);
+        }
+        
+        patientListTable.setModel(mTableModel);
+        
+        JTableHeader th = patientListTable.getTableHeader();
+        th.setBackground(Color.GREEN);
+        th.setFont( new Font( "Arial" , Font.BOLD, 13 ));
+
+        patientListTable.removeAll(); // removing all previous data from table
+        patientListTable.setModel(mTableModel); // adding new data list in the table
+
+        patientListTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        patientListTable.setColumnSelectionAllowed(false);
+        patientListTable.setRowSelectionAllowed(true);
+
     }
 
     /**
@@ -50,7 +139,6 @@ public class NurseFrame extends javax.swing.JFrame {
         patientListTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
         setBounds(new java.awt.Rectangle(200, 50, 1000, 700));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -64,9 +152,8 @@ public class NurseFrame extends javax.swing.JFrame {
         wardNameLabel.setText("Ward Name");
 
         wardNameComboBox.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        wardNameComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        wardNameComboBox.setModel(new javax.swing.DefaultComboBoxModel<>());
 
-        patientListTable.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         patientListTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

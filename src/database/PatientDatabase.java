@@ -5,13 +5,14 @@
  */
 package database;
 
+import database.model.DatabaseConnection;
 import model.PatientModel;
 
 /**
  *
  * @author SayefReyadh
  */
-public class PatientDatabase {
+public class PatientDatabase extends DatabaseConnection{
     
     
     public PatientModel getPatientModel(int patientId)
@@ -27,5 +28,6 @@ public class PatientDatabase {
     public void insertNewPatient(PatientModel patientModel)
     {
         ///insert into database
+        /// the work is done as I called the super calss excuteQuery function to insert
     }
 }

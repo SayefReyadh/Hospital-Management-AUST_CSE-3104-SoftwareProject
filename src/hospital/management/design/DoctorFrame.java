@@ -6,8 +6,19 @@
 package hospital.management.design;
 
 import database.DoctorDatabase;
+import database.ReportDatabase;
+import java.awt.Color;
+import java.awt.Font;
+import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import model.AppointmentModel;
 import model.DoctorModel;
+import model.PatientModel;
+import model.ReportModel;
 
 /**
  *
@@ -17,28 +28,35 @@ public class DoctorFrame extends javax.swing.JFrame {
 
     private DoctorModel doctorModel;
     private DoctorDatabase doctorDatabase;
+
     /**
      * Creates new form Login
      */
     public DoctorFrame() {
+        doctorDatabase = new DoctorDatabase();
+        doctorModel = doctorDatabase.getDoctorInformation(2345);
+
         initComponents();
-        addPanelToDoctorTaskPanel(appointmentPanel);
+        addPanelToDoctorTaskPanel(appointmentPanel, 1);
+
     }
-    
+
     public DoctorFrame(int doctorId) {
-        initComponents();
-        addPanelToDoctorTaskPanel(appointmentPanel);
-        
         doctorDatabase = new DoctorDatabase();
         doctorModel = doctorDatabase.getDoctorInformation(doctorId);
         
-        doctorModel.setAppointmentList(doctorDatabase.getAppointmentModels());
+        if (doctorModel == null) {
+            JFrame frame = new Login();
+            frame.setVisible(true);
+            dispose();
+        }
+
+        initComponents();
+        addPanelToDoctorTaskPanel(appointmentPanel, 1);
+
         ///set this arraylist to the appointment table
         //appointmentTable
-        
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -71,10 +89,10 @@ public class DoctorFrame extends javax.swing.JFrame {
         patientAddressTextArea = new javax.swing.JTextArea();
         patientAgeTextField1 = new javax.swing.JTextField();
         patientReportsPanel = new javax.swing.JPanel();
-        titleReportsLabel = new javax.swing.JLabel();
         patientNameReportsLabel = new javax.swing.JLabel();
         reportsScrollPane = new javax.swing.JScrollPane();
         reportsTable = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
         appointmentPanel = new javax.swing.JPanel();
         titleAppointmentLabel = new javax.swing.JLabel();
         appointmentScrollPane = new javax.swing.JScrollPane();
@@ -86,9 +104,9 @@ public class DoctorFrame extends javax.swing.JFrame {
         titlePatientListLabel = new javax.swing.JLabel();
         patientListScrollPane = new javax.swing.JScrollPane();
         patientListTable = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
         setBounds(new java.awt.Rectangle(200, 50, 1000, 700));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -264,10 +282,6 @@ public class DoctorFrame extends javax.swing.JFrame {
         patientReportsPanel.setBackground(new java.awt.Color(0, 153, 153));
         patientReportsPanel.setMaximumSize(new java.awt.Dimension(821, 644));
 
-        titleReportsLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        titleReportsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleReportsLabel.setText("Reports");
-
         patientNameReportsLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         patientNameReportsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         patientNameReportsLabel.setText("Reports");
@@ -285,35 +299,38 @@ public class DoctorFrame extends javax.swing.JFrame {
         ));
         reportsScrollPane.setViewportView(reportsTable);
 
+        jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout patientReportsPanelLayout = new javax.swing.GroupLayout(patientReportsPanel);
         patientReportsPanel.setLayout(patientReportsPanelLayout);
         patientReportsPanelLayout.setHorizontalGroup(
             patientReportsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientReportsPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(142, 142, 142))
             .addGroup(patientReportsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(patientReportsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titleReportsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(reportsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE))
+                    .addComponent(reportsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)
+                    .addComponent(patientNameReportsLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(patientReportsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(patientReportsPanelLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(patientNameReportsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)
-                    .addContainerGap()))
         );
         patientReportsPanelLayout.setVerticalGroup(
             patientReportsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(patientReportsPanelLayout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(titleReportsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(patientNameReportsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(reportsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
-            .addGroup(patientReportsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(patientReportsPanelLayout.createSequentialGroup()
-                    .addGap(10, 10, 10)
-                    .addComponent(patientNameReportsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(569, Short.MAX_VALUE)))
         );
 
         doctorTaskPanel.add(patientReportsPanel, "card4");
@@ -410,21 +427,39 @@ public class DoctorFrame extends javax.swing.JFrame {
         ));
         patientListScrollPane.setViewportView(patientListTable);
 
+        jButton1.setText("Show Report");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout patientListPanelLayout = new javax.swing.GroupLayout(patientListPanel);
         patientListPanel.setLayout(patientListPanelLayout);
         patientListPanelLayout.setHorizontalGroup(
             patientListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titlePatientListLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE)
             .addGroup(patientListPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(patientListScrollPane)
+                .addGroup(patientListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(patientListPanelLayout.createSequentialGroup()
+                        .addComponent(titlePatientListLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1))
+                    .addGroup(patientListPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(patientListScrollPane)))
                 .addContainerGap())
         );
         patientListPanelLayout.setVerticalGroup(
             patientListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(patientListPanelLayout.createSequentialGroup()
-                .addComponent(titlePatientListLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(patientListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(patientListPanelLayout.createSequentialGroup()
+                        .addComponent(titlePatientListLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 22, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientListPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(patientListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -449,44 +484,207 @@ public class DoctorFrame extends javax.swing.JFrame {
 
     private void viewPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientButtonActionPerformed
         // TODO add your handling code here:
-        addPanelToDoctorTaskPanel(patientListPanel);
-        doctorModel.setPatientList(doctorDatabase.getPatientsList());
+        addPanelToDoctorTaskPanel(patientListPanel, 2);
         ///set this arraylist to the patientlist table
         //patientsTable
         //might have to repaint again
-        
+
     }//GEN-LAST:event_viewPatientButtonActionPerformed
 
     private void viewAppointmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAppointmentButtonActionPerformed
         // TODO add your handling code here:
-        
-        addPanelToDoctorTaskPanel(appointmentPanel);
-        doctorModel.setAppointmentList(doctorDatabase.getAppointmentModels());
+
+        addPanelToDoctorTaskPanel(appointmentPanel, 1);
         ///set this arraylist to the appointment table
         //appointmentTable
         //might have to repaint again
-        
+
     }//GEN-LAST:event_viewAppointmentButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
-        
-        String date = "2017-05-01"; //get the date from searchDateTextField
-        doctorDatabase.getAppointmentModels(date);
-        doctorModel.setAppointmentList(doctorDatabase.getAppointmentModels());
-        ///set this arraylist to the appointment table
-        //appointmentTable
-        
+
+        String date = searchDateTextField.getText();//"2017-08-08"; //get the date from searchDateTextField
+        //storing main list for later
+        ArrayList<AppointmentModel> mainList = doctorModel.getAppointmentList();
+
+        //updating list
+        doctorModel.setAppointmentList(doctorDatabase.getAppointmentModels(date));
+
+        loadAppointmentTable();
+
+//        restoring main list 
+        doctorModel.setAppointmentList(mainList);
+
     }//GEN-LAST:event_searchButtonActionPerformed
-    
-    public void addPanelToDoctorTaskPanel(JPanel panel)
-    {
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+
+        addPanelToDoctorTaskPanel(patientListPanel, 2);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+        int patientID = Integer.parseInt((String) patientListTable
+                .getValueAt(patientListTable.getSelectedRow(), 0));
+
+        ArrayList<String> cols = new ArrayList<>();
+        cols.add("Report ID");
+        cols.add("Report Subject");
+        cols.add("Report Details");
+
+        DefaultTableModel mTableModel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+//        // adding the rows in the model
+        for (int i = 0; i < cols.size(); i++) {
+
+            mTableModel.addColumn(cols.get(i));
+        }
+
+        ReportDatabase database = new ReportDatabase();
+        ArrayList<ReportModel> models = database.getReports(patientID);
+
+        for (int i = 0; i < models.size(); i++) {
+            ReportModel model = models.get(i);
+            String[] row = {String.valueOf(model.getReportId()),
+                model.getReportSubjectString(), model.getReportDetailsString()};
+
+            mTableModel.addRow(row);
+        }
+
+        reportsTable.setModel(mTableModel);
+
+        addPanelToDoctorTaskPanel(patientReportsPanel, 3);
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public void addPanelToDoctorTaskPanel(JPanel panel, int type) {
+        if (type == 1) {
+            loadAppointmentTable();
+        } else if (type == 2) {
+            loadPatientTable();
+        }
         doctorTaskPanel.removeAll();
         doctorTaskPanel.add(panel);
         doctorTaskPanel.repaint();
         doctorTaskPanel.revalidate();
     }
-    
+
+//    loding the appointment table with appointment data
+    private void loadAppointmentTable() {
+        ArrayList<AppointmentModel> models = doctorModel.getAppointmentList();
+
+        ArrayList<String> cols = new ArrayList<>();
+        cols.add("Appointment ID");
+        cols.add("Patient Name");
+        cols.add("Appointment Date");
+        cols.add("Appointment Time");
+
+        DefaultTableModel mTableModel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+//        // adding the rows in the model
+        for (int i = 0; i < cols.size(); i++) {
+
+            mTableModel.addColumn(cols.get(i));
+        }
+//        
+        if (models == null || models.size() == 0) {
+            return;
+        }
+
+        for (int i = 0; i < models.size(); i++) {
+
+            String[] appoints = {String.valueOf(models.get(i).getAppointmentId()),
+                models.get(i).getPatientName(),
+                models.get(i).getDateString(),
+                models.get(i).getTimeString()};
+
+            mTableModel.addRow(appoints);
+
+        }
+
+        JTableHeader th = appointmentTable.getTableHeader();
+        th.setBackground(Color.GREEN);
+        th.setFont(new Font("Arial", Font.BOLD, 13));
+
+        appointmentTable.removeAll(); // removing all previous data from table
+        appointmentTable.setModel(mTableModel); // adding new data list in the table
+
+        appointmentTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        appointmentTable.setColumnSelectionAllowed(false);
+        appointmentTable.setRowSelectionAllowed(true);
+
+    }
+
+//    loding the patients list table with patients data
+    private void loadPatientTable() {
+
+        ArrayList<String> cols = new ArrayList<>();
+        cols.add("Patient ID");
+        cols.add("Patient Name");
+        cols.add("Patient age");
+        cols.add("Patient Gender");
+        cols.add("Patient Number");
+        cols.add("Patient Address");
+
+        DefaultTableModel mTableModel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+//        // adding the rows in the model
+        for (int i = 0; i < cols.size(); i++) {
+
+            mTableModel.addColumn(cols.get(i));
+        }
+//        
+
+        for (int i = 0; i < doctorModel.getPatientList().size(); i++) {
+
+            PatientModel model = doctorModel.getPatientList().get(i);
+
+            String[] patient = {String.valueOf(model.getId()),
+                model.getNameString(),
+                model.getAgeString(),
+                model.getGenderString(),
+                model.getContactString(),
+                model.getAddressString()};
+
+            mTableModel.addRow(patient);
+
+        }
+
+        JTableHeader th = patientListTable.getTableHeader();
+        th.setBackground(Color.GREEN);
+        th.setFont(new Font("Arial", Font.BOLD, 13));
+
+        patientListTable.removeAll(); // removing all previous data from table
+        patientListTable.setModel(mTableModel); // adding new data list in the table
+
+        patientListTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        patientListTable.setColumnSelectionAllowed(false);
+        patientListTable.setRowSelectionAllowed(true);
+
+        patientListTable.setRowSelectionInterval(0, 0);
+
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -536,6 +734,8 @@ public class DoctorFrame extends javax.swing.JFrame {
     private javax.swing.JPanel doctorTaskButtonPanel;
     private javax.swing.JPanel doctorTaskPanel;
     private javax.swing.JPanel doctorWorkStationPanel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel patientAddressLabel;
     private javax.swing.JScrollPane patientAddressScrollPane;
     private javax.swing.JTextArea patientAddressTextArea;
@@ -564,7 +764,6 @@ public class DoctorFrame extends javax.swing.JFrame {
     private javax.swing.JLabel titleAppointmentLabel;
     private javax.swing.JLabel titlePatientLabel;
     private javax.swing.JLabel titlePatientListLabel;
-    private javax.swing.JLabel titleReportsLabel;
     private javax.swing.JButton viewAppointmentButton;
     private javax.swing.JButton viewPatientButton;
     // End of variables declaration//GEN-END:variables

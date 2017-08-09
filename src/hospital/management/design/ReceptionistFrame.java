@@ -6,6 +6,7 @@
 package hospital.management.design;
 
 import database.PatientDatabase;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.PatientModel;
 
@@ -21,6 +22,11 @@ public class ReceptionistFrame extends javax.swing.JFrame {
     public ReceptionistFrame() {
         initComponents();
         addPanelToReceptionistTaskPanel(billPanel);
+    }
+    public ReceptionistFrame(int receptionistId) {
+        initComponents();
+        addPanelToReceptionistTaskPanel(patientInformationPanel);
+        
     }
 
     /**
@@ -115,7 +121,6 @@ public class ReceptionistFrame extends javax.swing.JFrame {
         appointmentConfirmButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
         setBounds(new java.awt.Rectangle(200, 50, 1000, 700));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -839,13 +844,23 @@ public class ReceptionistFrame extends javax.swing.JFrame {
     private void addPatientInformationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPatientInformationButtonActionPerformed
         // TODO add your handling code here:
         PatientDatabase patientDatabase = new PatientDatabase();
-        PatientModel patientModel = new PatientModel(
-                Integer.parseInt(patientIdTextField.getText()), 
-                patientNameTextField.getText(), 
-                (String) patientGenderComboBox.getSelectedItem(), 
-                patientAgeTextField.getText(), 
-                patientContactTextField.getText(), 
-                patientAddressTextArea.getText());
+        PatientModel patientModel = new PatientModel();
+        
+        patientModel.setId(01);
+        patientModel.setNameString(patientNameTextField.getText());
+        patientModel.setGenderString((String) patientGenderComboBox.getSelectedItem());
+        patientModel.setAgeString(patientAgeTextField.getText());
+        patientModel.setContactString(patientContactTextField.getText());
+        patientModel.setAddressString(patientAddressTextArea.getText());
+        System.out.println(patientModel.getInsertQuery());
+        boolean result = patientDatabase.excuteInsertQuery(patientModel.getInsertQuery());
+        if (result) {
+            JOptionPane.showMessageDialog(null, "Inserted Successfully!");
+        }else{
+            
+            JOptionPane.showMessageDialog(null, "Inserted Unsuccessfully!");
+        }
+        //patientDatabase.excuteInsertQuery(patientModel.getInsertQuery())
     }//GEN-LAST:event_addPatientInformationButtonActionPerformed
     
     public void addPanelToReceptionistTaskPanel(JPanel panel)
@@ -881,6 +896,10 @@ public class ReceptionistFrame extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ReceptionistFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

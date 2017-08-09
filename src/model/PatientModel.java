@@ -11,12 +11,12 @@ package model;
  */
 public class PatientModel {
     
-    private int id;
-    private String nameString;
-    private String genderString;
-    private String ageString;
-    private String contactString;
-    private String addressString;
+    private int id = 01;
+    private String nameString = "Default";
+    private String genderString = "Male";
+    private String ageString = "18";
+    private String contactString = "019";
+    private String addressString = "Dhaka";
 
     public PatientModel() {
     }
@@ -84,7 +84,17 @@ public class PatientModel {
 
     @Override
     public String toString() {
+        
         return "PatientModel{" + "id=" + id + ", nameString=" + nameString + ", genderString=" + genderString + ", ageString=" + ageString + ", contactString=" + contactString + ", addressString=" + addressString + '}';
+    }
+    
+    public String getInsertQuery()
+    {
+        String query = "insert into patient (patient_name , gender , patient_age , contact_no , patient_address) values ('" 
+                + nameString + "' , '" + genderString+ "' , '" +ageString+ "' , '" +contactString+ "' , '" +addressString + "')";
+        //insert into patient (patient_name , gender , patient_age , contact_no , patient_address)
+        //values ('sayef' , 'male' , '19' , '019' ,'dhaka');
+        return query;
     }
 
     
