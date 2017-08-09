@@ -6,6 +6,7 @@
 package hospital.management.design;
 
 import database.PatientDatabase;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.PatientModel;
 
@@ -120,7 +121,6 @@ public class ReceptionistFrame extends javax.swing.JFrame {
         appointmentConfirmButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
         setBounds(new java.awt.Rectangle(200, 50, 1000, 700));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -853,7 +853,13 @@ public class ReceptionistFrame extends javax.swing.JFrame {
         patientModel.setContactString(patientContactTextField.getText());
         patientModel.setAddressString(patientAddressTextArea.getText());
         System.out.println(patientModel.getInsertQuery());
-        patientDatabase.excuteInsertQuery(patientModel.getInsertQuery());
+        boolean result = patientDatabase.excuteInsertQuery(patientModel.getInsertQuery());
+        if (result) {
+            JOptionPane.showMessageDialog(null, "Inserted Successfully!");
+        }else{
+            
+            JOptionPane.showMessageDialog(null, "Inserted Unsuccessfully!");
+        }
         //patientDatabase.excuteInsertQuery(patientModel.getInsertQuery())
     }//GEN-LAST:event_addPatientInformationButtonActionPerformed
     

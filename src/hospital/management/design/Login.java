@@ -37,7 +37,6 @@ public class Login extends javax.swing.JFrame {
         employeeOptionComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
         setBounds(new java.awt.Rectangle(200, 50, 1000, 700));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

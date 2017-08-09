@@ -49,7 +49,6 @@ public class LaboratorianFrame extends javax.swing.JFrame {
         reportPatientIdLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
         setBounds(new java.awt.Rectangle(200, 50, 1000, 700));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -172,7 +171,10 @@ public class LaboratorianFrame extends javax.swing.JFrame {
         reportModel.setReportDetailsString(reportDetailsTextArea.getText());
         reportModel.setReportSubjectString(reportSubjectTextField.getText());
         System.out.println(reportModel.toString());
-        reportDatabase.setReportInformation(reportModel);
+        boolean result = reportDatabase.setReportInformation(reportModel);
+        if (result) {
+            initComponents();
+        }
     }//GEN-LAST:event_addReportButtonActionPerformed
     
     

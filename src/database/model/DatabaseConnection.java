@@ -77,6 +77,13 @@ public abstract class DatabaseConnection {
                 return null;
             }
         }
+        
+        
+        if (result == null) {
+            
+            JOptionPane.showMessageDialog(null, "Something went wrong! Please check your inputs");
+        }
+        
         closeConnection();
         return result;
     }
@@ -113,6 +120,10 @@ public abstract class DatabaseConnection {
             JOptionPane.showMessageDialog(null, ex.getLocalizedMessage());
             Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        }
+        if (result == null) {
+            
+            JOptionPane.showMessageDialog(null, "Something went wrong! Please check your inputs");
         }
         return result;
     }
