@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,6 +36,8 @@ public abstract class DatabaseConnection {
             System.out.println("Successfully Connected..");
             return true;
         } catch (SQLException ex) {
+
+            JOptionPane.showMessageDialog(null, ex.getLocalizedMessage());
             Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Cannot Connect to Database");
             printStackTrace();
@@ -49,6 +52,8 @@ public abstract class DatabaseConnection {
                 System.out.println("Connection Closed");
                 return true;
             } catch (SQLException ex) {
+
+                JOptionPane.showMessageDialog(null, ex.getLocalizedMessage());
                 Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);
                 return false;
             }
@@ -65,6 +70,8 @@ public abstract class DatabaseConnection {
                 pStatement = mConnection.prepareStatement(query);
                 result = pStatement.executeQuery();
             } catch (SQLException ex) {
+
+                JOptionPane.showMessageDialog(null, ex.getLocalizedMessage());
                 Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);
                 closeConnection();
                 return null;
@@ -86,11 +93,28 @@ public abstract class DatabaseConnection {
                     return true;
                 }
             } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex.getLocalizedMessage());
                 Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         closeConnection();
         return false;
+    }
+
+    public ResultSet runQuery(String query) {
+
+        ResultSet result = null;
+        PreparedStatement pStatement;
+        try {
+            pStatement = mConnection.prepareStatement(query);
+            result = pStatement.executeQuery();
+        } catch (SQLException ex) {
+
+            JOptionPane.showMessageDialog(null, ex.getLocalizedMessage());
+            Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        return result;
     }
 
 }

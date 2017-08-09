@@ -21,6 +21,10 @@ public class LaboratorianFrame extends javax.swing.JFrame {
     public LaboratorianFrame() {
         initComponents();
     }
+    
+    public LaboratorianFrame(int laboratorianId) {
+        initComponents();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -167,7 +171,7 @@ public class LaboratorianFrame extends javax.swing.JFrame {
         reportModel.setDoctorId(Integer.parseInt(reportDoctorIdTextField.getText()));
         reportModel.setReportDetailsString(reportDetailsTextArea.getText());
         reportModel.setReportSubjectString(reportSubjectTextField.getText());
-        
+        System.out.println(reportModel.toString());
         reportDatabase.setReportInformation(reportModel);
     }//GEN-LAST:event_addReportButtonActionPerformed
     

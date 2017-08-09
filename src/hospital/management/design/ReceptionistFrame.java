@@ -22,6 +22,11 @@ public class ReceptionistFrame extends javax.swing.JFrame {
         initComponents();
         addPanelToReceptionistTaskPanel(billPanel);
     }
+    public ReceptionistFrame(int receptionistId) {
+        initComponents();
+        addPanelToReceptionistTaskPanel(patientInformationPanel);
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -839,13 +844,17 @@ public class ReceptionistFrame extends javax.swing.JFrame {
     private void addPatientInformationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPatientInformationButtonActionPerformed
         // TODO add your handling code here:
         PatientDatabase patientDatabase = new PatientDatabase();
-        PatientModel patientModel = new PatientModel(
-                Integer.parseInt(patientIdTextField.getText()), 
-                patientNameTextField.getText(), 
-                (String) patientGenderComboBox.getSelectedItem(), 
-                patientAgeTextField.getText(), 
-                patientContactTextField.getText(), 
-                patientAddressTextArea.getText());
+        PatientModel patientModel = new PatientModel();
+        
+        patientModel.setId(01);
+        patientModel.setNameString(patientNameTextField.getText());
+        patientModel.setGenderString((String) patientGenderComboBox.getSelectedItem());
+        patientModel.setAgeString(patientAgeTextField.getText());
+        patientModel.setContactString(patientContactTextField.getText());
+        patientModel.setAddressString(patientAddressTextArea.getText());
+        System.out.println(patientModel.getInsertQuery());
+        patientDatabase.excuteInsertQuery(patientModel.getInsertQuery());
+        //patientDatabase.excuteInsertQuery(patientModel.getInsertQuery())
     }//GEN-LAST:event_addPatientInformationButtonActionPerformed
     
     public void addPanelToReceptionistTaskPanel(JPanel panel)
@@ -881,6 +890,10 @@ public class ReceptionistFrame extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ReceptionistFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

@@ -15,6 +15,7 @@ public class AppointmentModel {
     private int patientId;
     private String dateString;
     private String timeString;
+    private String patientName;
 
     public AppointmentModel() {
     }
@@ -27,6 +28,14 @@ public class AppointmentModel {
         this.timeString = timeString;
     }
 
+    
+    public AppointmentModel(int appointmentId, int doctorId, String patientName, String dateString, String timeString) {
+        this.appointmentId = appointmentId;
+        this.doctorId = doctorId;
+        this.patientName = patientName;
+        this.dateString = dateString;
+        this.timeString = timeString;
+    }
     public int getAppointmentId() {
         return appointmentId;
     }
@@ -65,6 +74,10 @@ public class AppointmentModel {
 
     public void setTimeString(String timeString) {
         this.timeString = timeString;
+    }
+
+    public String getPatientName() {
+        return patientName;
     }
     
     

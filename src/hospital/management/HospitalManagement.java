@@ -19,7 +19,7 @@ public class HospitalManagement {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        new ReceptionistFrame().setVisible(true);
+        new Login().setVisible(true);
         
     }
     

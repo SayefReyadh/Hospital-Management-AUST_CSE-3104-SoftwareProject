@@ -6,8 +6,16 @@
 package hospital.management.design;
 
 import database.DoctorDatabase;
+import java.awt.Color;
+import java.awt.Font;
+import java.util.ArrayList;
 import javax.swing.JPanel;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import model.AppointmentModel;
 import model.DoctorModel;
+import model.PatientModel;
 
 /**
  *
@@ -21,18 +29,22 @@ public class DoctorFrame extends javax.swing.JFrame {
      * Creates new form Login
      */
     public DoctorFrame() {
+        doctorDatabase = new DoctorDatabase();
+        doctorModel = doctorDatabase.getDoctorInformation(2345);
+        
         initComponents();
-        addPanelToDoctorTaskPanel(appointmentPanel);
+        addPanelToDoctorTaskPanel(appointmentPanel, 1);
+        
     }
     
     public DoctorFrame(int doctorId) {
-        initComponents();
-        addPanelToDoctorTaskPanel(appointmentPanel);
-        
         doctorDatabase = new DoctorDatabase();
         doctorModel = doctorDatabase.getDoctorInformation(doctorId);
         
-        doctorModel.setAppointmentList(doctorDatabase.getAppointmentModels());
+        initComponents();
+        addPanelToDoctorTaskPanel(appointmentPanel, 1);
+        
+        
         ///set this arraylist to the appointment table
         //appointmentTable
         
@@ -449,8 +461,7 @@ public class DoctorFrame extends javax.swing.JFrame {
 
     private void viewPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientButtonActionPerformed
         // TODO add your handling code here:
-        addPanelToDoctorTaskPanel(patientListPanel);
-        doctorModel.setPatientList(doctorDatabase.getPatientsList());
+        addPanelToDoctorTaskPanel(patientListPanel, 2);
         ///set this arraylist to the patientlist table
         //patientsTable
         //might have to repaint again
@@ -460,8 +471,7 @@ public class DoctorFrame extends javax.swing.JFrame {
     private void viewAppointmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAppointmentButtonActionPerformed
         // TODO add your handling code here:
         
-        addPanelToDoctorTaskPanel(appointmentPanel);
-        doctorModel.setAppointmentList(doctorDatabase.getAppointmentModels());
+        addPanelToDoctorTaskPanel(appointmentPanel, 1);
         ///set this arraylist to the appointment table
         //appointmentTable
         //might have to repaint again
@@ -471,21 +481,140 @@ public class DoctorFrame extends javax.swing.JFrame {
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
         
-        String date = "2017-05-01"; //get the date from searchDateTextField
-        doctorDatabase.getAppointmentModels(date);
-        doctorModel.setAppointmentList(doctorDatabase.getAppointmentModels());
-        ///set this arraylist to the appointment table
-        //appointmentTable
+        String date = searchDateTextField.getText();//"2017-08-08"; //get the date from searchDateTextField
+        //storing main list for later
+        ArrayList<AppointmentModel> mainList = doctorModel.getAppointmentList();
+        
+        //updating list
+        doctorModel.setAppointmentList(doctorDatabase.getAppointmentModels(date));
+        
+        loadAppointmentTable();
+        
+//        restoring main list 
+        doctorModel.setAppointmentList(mainList);
         
     }//GEN-LAST:event_searchButtonActionPerformed
     
-    public void addPanelToDoctorTaskPanel(JPanel panel)
+    public void addPanelToDoctorTaskPanel(JPanel panel, int type)
     {
+       if (type == 1) {
+           loadAppointmentTable();
+       }
+       else {
+           loadPatientTable();
+       }
         doctorTaskPanel.removeAll();
         doctorTaskPanel.add(panel);
         doctorTaskPanel.repaint();
         doctorTaskPanel.revalidate();
     }
+    
+    
+//    loding the appointment table with appointment data
+    private void loadAppointmentTable() {
+
+        ArrayList<String> cols = new ArrayList<>();
+        cols.add("Appointment ID");
+        cols.add("Patient Name");
+        cols.add("Appointment Date");
+        cols.add("Appointment Time");
+
+        DefaultTableModel mTableModel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+//        // adding the rows in the model
+        for (int i = 0; i < cols.size() ; i++) {
+           
+            mTableModel.addColumn(cols.get(i));
+        }
+//        
+
+        for (int i = 0 ; i < doctorModel.getAppointmentList().size() ; i ++) {
+            
+            String[] appoints = {String.valueOf(doctorModel.getAppointmentList().get(i).getAppointmentId()),
+                                            doctorModel.getAppointmentList().get(i).getPatientName(),
+                                            doctorModel.getAppointmentList().get(i).getDateString(),
+                                            doctorModel.getAppointmentList().get(i).getTimeString()};
+            
+            mTableModel.addRow(appoints);
+            
+        }
+        
+        JTableHeader th = appointmentTable.getTableHeader();
+        th.setBackground(Color.GREEN);
+        th.setFont( new Font( "Arial" , Font.BOLD, 13 ));
+
+        appointmentTable.removeAll(); // removing all previous data from table
+        appointmentTable.setModel(mTableModel); // adding new data list in the table
+
+        appointmentTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        appointmentTable.setColumnSelectionAllowed(false);
+        appointmentTable.setRowSelectionAllowed(true);
+
+
+    }
+ 
+//    loding the patients list table with patients data
+    private void loadPatientTable() {
+
+        ArrayList<String> cols = new ArrayList<>();
+        cols.add("Patient ID");
+        cols.add("Patient Name");
+        cols.add("Patient age");
+        cols.add("Patient Gender");
+        cols.add("Patient Number");
+        cols.add("Patient Address");
+
+        DefaultTableModel mTableModel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+//        // adding the rows in the model
+        for (int i = 0; i < cols.size() ; i++) {
+           
+            mTableModel.addColumn(cols.get(i));
+        }
+//        
+
+        for (int i = 0 ; i < doctorModel.getPatientList().size() ; i ++) {
+            
+            PatientModel model = doctorModel.getPatientList().get(i);
+            
+            String[] patient = {String.valueOf(model.getId()),
+            model.getNameString(),
+            model.getAgeString(),
+            model.getGenderString(),
+            model.getContactString(),
+            model.getAddressString()};
+            
+            mTableModel.addRow(patient);
+            
+        }
+        
+        JTableHeader th = patientListTable.getTableHeader();
+        th.setBackground(Color.GREEN);
+        th.setFont( new Font( "Arial" , Font.BOLD, 13 ));
+
+        patientListTable.removeAll(); // removing all previous data from table
+        patientListTable.setModel(mTableModel); // adding new data list in the table
+
+        patientListTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        patientListTable.setColumnSelectionAllowed(false);
+        patientListTable.setRowSelectionAllowed(true);
+
+        patientListTable.setRowSelectionInterval(0, 0);
+
+    }
+
     
     /**
      * @param args the command line arguments

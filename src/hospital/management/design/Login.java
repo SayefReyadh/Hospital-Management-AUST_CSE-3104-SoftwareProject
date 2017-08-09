@@ -68,9 +68,14 @@ public class Login extends javax.swing.JFrame {
 
         loginButton.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         loginButton.setText("Login");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
         employeeOptionComboBox.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        employeeOptionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doctor", "Reciptionist" }));
+        employeeOptionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doctor", "Reciptionist", "Nurse", "Labratorian" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -129,6 +134,34 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+        if(!userIdTextField.getText().equalsIgnoreCase(""))
+        {
+            String option = (String) employeeOptionComboBox.getSelectedItem();
+            System.out.println(option);
+            int id = Integer.parseInt(userIdTextField.getText());
+            switch(option)
+            {
+                case "Doctor":
+                    new DoctorFrame(id).setVisible(true);
+                    break;
+                    case "Reciptionist":
+                    new ReceptionistFrame(id).setVisible(true);
+                    break;
+                    case "Nurse":
+                    new NurseFrame(id).setVisible(true);
+                    break;
+                    case "Labratorian":
+                    new LaboratorianFrame(id).setVisible(true);
+                    break;
+                    default:
+                        System.out.println("No Option");
+            }
+            this.dispose();
+        }
+    }//GEN-LAST:event_loginButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -154,6 +187,10 @@ public class Login extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
